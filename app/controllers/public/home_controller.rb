@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class Public::HomeController < ApplicationController
   def about
     
   end
