@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class Admin::HomeController < ApplicationController
   def about
     
   end

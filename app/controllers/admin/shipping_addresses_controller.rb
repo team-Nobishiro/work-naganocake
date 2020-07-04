@@ -1,2 +1,2 @@
-class ShippingAddressesController < ApplicationController
+class Admin::ShippingAddressesController < ApplicationController
 end
