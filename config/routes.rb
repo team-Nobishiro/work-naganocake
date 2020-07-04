@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   get "public/end_users/edit" => "public/end_users#edit"
   patch "public/end_users" => "public/end_users#update"
   get "public/end_users/withdrawal" => "public/end_users#withdrawal"
-  delete "public/end_users" => "public/end_users#destroy"
+  delete "public/end_users" => "public/end_users#destroy", as: 'end_users_destroy'
 end

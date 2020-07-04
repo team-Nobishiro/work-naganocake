@@ -6,32 +6,38 @@
 		      <h2 class="pageTitle">登録情報編集</h2>
 		      <p>下記のとおりご登録いただいております。</p>
 		      <table>
-            <tbody>
-              <tr>
-                <th align="right" scope="row" width="30%">名前</th>
-                <td></td>
-              </tr>
-              <tr>
-                <th align="right" scope="row" width="30%">フリガナ</th>
-                <td></td>
-              </tr>
-              <tr>
-                <th align="right" scope="row" width="30%">メールアドレス</th>
-                <td></td>
-              </tr>
-              <tr>
-                <th align="right" scope="row" width="30%">郵便番号(ハイフンなし)</th>
-                <td></td>
-              </tr>
-              <tr>
-                <th align="right" scope="row" width="30%">住所</th>
-                <td></td>
-              </tr>
-              <tr>
-                <th align="right" scope="row" width="30%">電話番号(ハイフンなし)</th>
-                <td></td>
-              </tr>
-            </tbody>
+            <%= form_for(@end_user, url: public_end_users_path(current_user.id)) do |f| %>
+              <tbody>
+                <tr class="form-group has-icon">
+                  <th align="right" scope="row" width="30%">名前</th>
+                  <td><%= f.text_field :first_name, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"名前"%></td>
+                  <td><%= f.text_field :last_name, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"名前"%></td>
+                </tr>
+                <tr class="form-group has-icon">
+                  <th align="right" scope="row" width="30%">フリガナ</th>
+                  <td><%= f.text_field :first_name_kana, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"名前"%></td>
+                  <td><%= f.text_field :last_name, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"名前"%></td>
+                </tr>
+                <tr class="form-group has-icon">
+                  <th align="right" scope="row" width="30%">メールアドレス</th>
+                  <td><%= f.text_area :email, autofocus: true, class:"form-control", id:"user_introduction", placeholder:"Introduction"%></td>
+                </tr>
+                <tr class="form-group has-icon">
+                  <th align="right" scope="row" width="30%">郵便番号(ハイフンなし)</th>
+                  <td><%= f.text_area :postal_code, autofocus: true, class:"form-control", id:"user_introduction", placeholder:"Introduction"%></td>
+                </tr>
+                <tr class="form-group has-icon">
+                  <th align="right" scope="row" width="30%">住所</th>
+                  <td><%= f.text_area :address, autofocus: true, class:"form-control", id:"user_introduction", placeholder:"Introduction"%></td>
+                </tr>
+                <tr class="form-group has-icon">
+                  <th align="right" scope="row" width="30%">電話番号(ハイフンなし)</th>
+                  <td><%= f.text_area :phone_number, autofocus: true, class:"form-control", id:"user_introduction", placeholder:"Introduction"%></td>
+                </tr>
+              </tbody>
+              <%= f.submit "登録内容を保存する" %>
+            <% end %>
+            <%= link_to "退会する", public_end_users_withdrawal_path(end_user.id)%>
           </table>
 			    <div>
 			    </div>

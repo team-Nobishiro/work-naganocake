@@ -30,9 +30,17 @@ class Public::EndUsersController < ApplicationController
 		redirect_to root_path
   end
 
+  def hide
+    @end_user = EndUser.find(params[:id])
+    @end_user.update(is_withdrawal: true)
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
+  end
+
   private
   def end_user_params
     params.require(:end_user).permit(:email, :last_name, :first_name, :last_name_kana,
-                                     :first_name_kana, :phone_number, :postal_code, :address)
+                                     :first_name_kana, :phone_number, :postal_code, :address, :is_withdrawal)
   end
 end
