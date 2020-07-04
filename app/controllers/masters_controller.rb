@@ -1,2 +1,0 @@
-class MastersController < ApplicationController
-end
