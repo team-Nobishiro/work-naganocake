@@ -43,6 +43,65 @@ ActiveRecord::Schema.define(version: 2020_07_02_141900) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_masters_on_email", unique: true
     t.index ["reset_password_token"], name: "index_masters_on_reset_password_token", unique: true
+
+
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "end_user_id"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_valid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.text "introduction"
+    t.string "image_id"
+    t.integer "not_taxprice"
+    t.boolean "is_sale_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "genre_id"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "item_id"
+    t.integer "number"
+    t.integer "tax_price"
+    t.integer "production"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "end_user_id"
+    t.integer "select"
+    t.integer "toral_price"
+    t.integer "send_price"
+    t.integer "payment_way"
+    t.string "postal_code"
+    t.string "address"
+    t.string "address_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shipping_addresses", force: :cascade do |t|
+    t.integer "end_user_id"
+    t.string "postal_code"
+    t.string "address"
+    t.string "address_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

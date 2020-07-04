@@ -9,4 +9,5 @@ devise_for :end_user
   
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'home/about'
 end
