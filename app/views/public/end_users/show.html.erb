@@ -4,30 +4,32 @@
     <h3 class="title t-center">登録情報</h3>
     <table class="transaction">
       <tbody>
-        <tr>
-          <th>氏名</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th>カナ</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th>郵便番号</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th>住所</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th>電話番号</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th>メールアドレス</th>
-          <td></td>
-        </tr>
+        <% @end_user.each do |e| %>
+          <tr>
+            <th>氏名</th>
+            <td><%= e.first_name %><%= e.last_name %></td>
+          </tr>
+          <tr>
+            <th>カナ</th>
+            <td><%= e.first_name_kana %><%= e.last_name_kana %></td>
+          </tr>
+          <tr>
+            <th>郵便番号</th>
+            <td><%= e.postal_code %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= e.address %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= e.phone_number %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= e.email %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>

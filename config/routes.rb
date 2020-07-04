@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   }
 
 	get "public/homes/about" => "public/homes#about"
-	get "public/shipping_address" => "public/shipping_addresses#index"  
-  get "public/end_users/show" => "public/end_users#show"
+  get "public/shipping_address" => "public/shipping_addresses#index"  
+  
+  get "public/end_users" => "public/end_users#show"
+  get "public/end_users/edit" => "public/end_users#edit"
+  patch "public/end_users" => "public/end_users#update"
+  get "public/end_users/withdrawal" => "public/end_users#withdrawal"
+  delete "public/end_users" => "public/end_users#destroy"
 end
