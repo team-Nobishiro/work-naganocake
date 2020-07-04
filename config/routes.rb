@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 	devise_for :master, controllers: {
   sessions: 'admin/masters/sessions'
 }
-devise_for :end_user
+devise_for :end_user, controllers: {
+  sessions: 'public/end_users/sessions',
+  registrations: 'public/end_users/registrations'
+}
+
 	get "public/homes/about" => "public/homes#about"
   
   
