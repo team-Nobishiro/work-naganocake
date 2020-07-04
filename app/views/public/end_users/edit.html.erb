@@ -6,7 +6,7 @@
 		      <h2 class="pageTitle">登録情報編集</h2>
 		      <p>下記のとおりご登録いただいております。</p>
 		      <table>
-            <%= form_for(@end_user, url: public_end_users_path(current_user.id)) do |f| %>
+            <%= form_for(@end_user, url: public_end_users_path(current_end_user.id)) do |f| %>
               <tbody>
                 <tr class="form-group has-icon">
                   <th align="right" scope="row" width="30%">名前</th>

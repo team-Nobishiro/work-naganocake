@@ -1,6 +1,6 @@
 class Public::EndUsersController < ApplicationController
   def show
-    @end_user = current_end_user.id
+    @end_user = current_end_user
 
   end
 
