@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     :registrations => 'public/registrations'
   }
 
-	get "public/homes/about" => "public/homes#about"
+  get "public/homes/about" => "public/homes#about"
+  
   get "public/shipping_address" => "public/shipping_addresses#index"  
   
   get "public/end_users" => "public/end_users#show"
