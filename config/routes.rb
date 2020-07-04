@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 	root 'public/homes#top'
 	devise_for :master, controllers: {
-  sessions: 'masters/sessions',
-  yus: 'masters/yus'
+  sessions: 'admin/masters/sessions'
 }
 devise_for :end_user
 	get "public/homes/about" => "public/homes#about"

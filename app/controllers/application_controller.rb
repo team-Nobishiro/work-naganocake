@@ -8,6 +8,6 @@ before_action :configure_permitted_parameters, if: :devise_controller?
  admin_home_about_path
 end
 def after_sign_out_path_for(resource)
- master_session_path
+ new_master_session_path
 end
 end
