@@ -1,0 +1,51 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap-sprockets";  /*ここを追加*/
+ @import "bootstrap";            /*ここを追加*/
+
+ * {
+   color: white;
+   background-color: black;
+ }
+
+ a:hover {
+   color: white;
+ }
+
+ table {
+   width: 80%;
+ }
+
+ table, th {
+   border: 1px solid white;
+   padding: 10px;
+ }
+
+ table, td {
+   padding: 10px;
+ }
+
+ #theTarget {
+   width: 700px;
+   height: 350px;
+   background-image: url(short_cake.jpg);
+   background-size: cover;
+   padding: 130px 0 0 20px;
+ }
+
+ body {
+   margin-top: 70px;
+ }
