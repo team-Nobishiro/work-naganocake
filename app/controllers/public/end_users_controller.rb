@@ -1,14 +1,14 @@
 class Public::EndUsersController < ApplicationController
   def show
     @end_user = current_end_user.id
-    
+
   end
 
   def edit
-    @end_user = EndUser.find(params[:id])
-    	if @end_user != current_user
-        	redirect_to root_path
-    	end
+    # @end_user = EndUser.find(params[:id])
+    # 	if @end_user != current_user
+    #     	redirect_to root_path
+    # 	end
   end
   
   def update
@@ -21,7 +21,7 @@ class Public::EndUsersController < ApplicationController
   end
 
   def withdrawal
-    @end_user = EndUser.find(params[:id])
+    # @end_user = EndUser.find(params[:id])
   end
 
   def destroy
