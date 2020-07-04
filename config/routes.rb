@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-	root 'homes#top'
+	root 'public/homes#top'
 	devise_for :master, controllers: {
   sessions: 'masters/sessions',
   yus: 'masters/yus'
