@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'public/homes#top'
 
@@ -11,7 +12,13 @@ Rails.application.routes.draw do
   }
 
 	get "public/homes/about" => "public/homes#about"
-	get "public/shipping_address" => "public/shipping_addresses#index"  
-  
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+	namespace :public do
+	  resources :shipping_addresses, except: [:new, :show]
+	end
+
+	namespace :admin do
+	  resources :items
+	end
+
 end
