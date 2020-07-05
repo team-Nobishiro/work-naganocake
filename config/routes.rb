@@ -23,5 +23,6 @@ Rails.application.routes.draw do
     resource :end_users
   end
   get "public/end_users/withdrawal" => "public/end_users#withdrawal"
+  put "public/end_users/hide" => "public/end_users#hide", as: 'users_hide'
 
 end

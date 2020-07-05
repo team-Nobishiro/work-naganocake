@@ -5,10 +5,6 @@ class Public::EndUsersController < ApplicationController
   end
 
   def edit
-    # @end_user = EndUser.find(params[:id])
-    # 	if @end_user != current_user
-    #     	redirect_to root_path
-    # 	end
     @end_user = current_end_user
   end
   
@@ -22,11 +18,11 @@ class Public::EndUsersController < ApplicationController
   end
 
   def withdrawal
-    # @end_user = EndUser.find(params[:id])
+    @end_user = current_end_user
   end
 
   def hide
-    @end_user = EndUser.find(params[:id])
+    @end_user = current_end_user
     @end_user.update(is_withdrawal: true)
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"

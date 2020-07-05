@@ -7,4 +7,8 @@ class EndUser < ApplicationRecord
   has_many :shipping_addresses, :dependent => :destroy
   has_many :cart_items, :dependent => :destroy
   has_many :orders, :dependent => :destroy       
+
+  def active_for_authentication?
+    super && (self.is_withdrawal == false)
+  end
 end
