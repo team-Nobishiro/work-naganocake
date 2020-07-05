@@ -15,11 +15,6 @@ class Public::EndUsersController < ApplicationController
 		else
 			render action: :edit
     end
-      if params[:user][:password].blank?
-        params[:user].delete("password")
-      end
-      if @user.update(user_params)
-    end
   end
 
   def withdrawal
