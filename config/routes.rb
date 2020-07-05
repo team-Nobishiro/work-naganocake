@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'public/homes#top'
 
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
     :passwords => 'public/passwords',
     :sessions => 'public/sessions'
   }
+
 
   get "public/homes/about" => "public/homes#about"
   
@@ -25,5 +27,16 @@ Rails.application.routes.draw do
   end
   get "public/end_users/withdrawal" => "public/end_users#withdrawal"
   put "public/end_users/hide" => "public/end_users#hide", as: 'users_hide'
+
+
+
+	namespace :public do
+	  resources :shipping_addresses, except: [:new, :show]
+	end
+
+	namespace :admin do
+	  resources :items
+	end
+
 
 end

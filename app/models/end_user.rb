@@ -4,6 +4,7 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
   has_many :shipping_addresses, :dependent => :destroy
   has_many :cart_items, :dependent => :destroy
   has_many :orders, :dependent => :destroy     
@@ -20,4 +21,6 @@ class EndUser < ApplicationRecord
   #     false
   #   end
   # end
+
+  has_many :shipping_addresses 
 end
