@@ -1,47 +1,64 @@
 <section class="cake-top">
   <h2 class="title">マイページ</h2>
   <div class="guide_conts">
-    <h3 class="title t-center">登録情報</h3>
+    <nav>
+			<ul class="nav navbar-nav">
+					<li>登録情報</li>
+					<li>
+						<button type="button" class="btn btn-danger">
+							<%= link_to ' 編集する', edit_public_end_users_path, :style => "color:white;" %>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger">
+							<%= link_to ' パスワードを変更する', new_end_user_password_path, :style => "color:white;" %>
+						</button>
+					</li>
+			</ul>
+		</nav>
     <table class="transaction">
       <tbody>
-        <% @end_user.each do |e| %>
           <tr>
             <th>氏名</th>
-            <td><%= e.first_name %><%= e.last_name %></td>
+            <td><%= current_end_user.last_name %><%= current_end_user.first_name %></td>
           </tr>
           <tr>
             <th>カナ</th>
-            <td><%= e.first_name_kana %><%= e.last_name_kana %></td>
+            <td><%= current_end_user.last_name_kana %><%= current_end_user.first_name_kana %></td>
           </tr>
           <tr>
             <th>郵便番号</th>
-            <td><%= e.postal_code %></td>
+            <td><%= current_end_user.postal_code %></td>
           </tr>
           <tr>
             <th>住所</th>
-            <td><%= e.address %></td>
+            <td><%= current_end_user.address %></td>
           </tr>
           <tr>
             <th>電話番号</th>
-            <td><%= e.phone_number %></td>
+            <td><%= current_end_user.phone_number %></td>
           </tr>
           <tr>
             <th>メールアドレス</th>
-            <td><%= e.email %></td>
+            <td><%= current_end_user.email %></td>
           </tr>
-        <% end %>
       </tbody>
     </table>
   </div>
+  
   <div class="row">
-    <h3>配送先</h3>
-    <div class="btn btn-success col-xs-10 col-xs-offset-1 sign_up" >
+    <div class="col-xs-1">
+      <h3>配送先</h3>
+    </div>
+    <div class="btn btn-success" >
       <%= link_to "一覧を見る", root_path %>
     </div>
   </div>
   <div class="row">
-    <h3>注文履歴</h3>
-    <div class="btn btn-success col-xs-10 col-xs-offset-1 sign_up" >
+    <div class="col-xs-2">
+      <h3>注文履歴</h3>
+    </div>
+    <div class="btn btn-success" >
       <%= link_to "一覧を見る", root_path %>
     </div>
   </div>

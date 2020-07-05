@@ -2,7 +2,6 @@ class Public::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
   
   def show
-    @end_user = current_end_user
   end
 
   def edit
@@ -10,12 +9,13 @@ class Public::EndUsersController < ApplicationController
     # 	if @end_user != current_user
     #     	redirect_to root_path
     # 	end
+    @end_user = current_end_user
   end
   
   def update
-    @end_user = EndUser.find(params[:id])
+    @end_user = current_end_user
 		if @end_user.update(end_user_params)
-			redirect_to public_end_users_path(@end_user.id), notice: 'successfully updated'
+			redirect_to public_end_users_path, notice: 'successfully updated'
 		else
 			render action: :edit
 		end
@@ -23,12 +23,6 @@ class Public::EndUsersController < ApplicationController
 
   def withdrawal
     # @end_user = EndUser.find(params[:id])
-  end
-
-  def destroy
-    @end_user = EndUser.find(params[:id])
-		@end_user.destroy
-		redirect_to root_path
   end
 
   def hide

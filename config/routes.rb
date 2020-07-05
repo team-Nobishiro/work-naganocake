@@ -7,16 +7,21 @@ Rails.application.routes.draw do
   }
 
   devise_for :end_users, controllers: {
-    :registrations => 'public/registrations'
+    :registrations => 'public/registrations',
+    :passwords => 'public/passwords'
   }
 
   get "public/homes/about" => "public/homes#about"
   
   get "public/shipping_address" => "public/shipping_addresses#index"  
   
-  get "public/end_users" => "public/end_users#show"
-  get "public/end_users/edit" => "public/end_users#edit"
-  patch "public/end_users" => "public/end_users#update"
+
+
+
+
+  namespace :public do
+    resource :end_users
+  end
   get "public/end_users/withdrawal" => "public/end_users#withdrawal"
-  delete "public/end_users" => "public/end_users#destroy", as: 'end_users_destroy'
+
 end
