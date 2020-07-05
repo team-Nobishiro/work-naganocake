@@ -3,7 +3,7 @@ class Admin::EndUsersController < ApplicationController
 
 	def index
 	@end_users = EndUser.all
-	 @end_user = EndUser.where(end_user_id: current_end_user.id)
+	 @end_user = current_end_user
 	end
 
 	def show
