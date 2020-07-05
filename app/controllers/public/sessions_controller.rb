@@ -24,4 +24,17 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  protected
+
+  def reject_end_user
+    @end_user = EndUser.find_by(email: params[:end_user][:email].downcase)
+    if @end_user
+      if (@end_user.valid_password?(params[:end_user][:password]) && (@end_user.active_for_authentication? == false))
+        flash[:error] = "退会済みです。"
+        redirect_to new_end_user_session_path
+      end
+    else
+      flash[:error] = "必須項目を入力してください。"
+    end
+  end
 end

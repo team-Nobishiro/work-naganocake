@@ -1,5 +1,32 @@
-<h2>配送先登録/一覧</h2>
-<%= form_for(@shipping_address_new) do |f| %>
-  <%= f.text_field :postal_code, class: "form-control", placeholder: "郵便番号(ハイフンなし)" %>
-  <%= f.text_field :address, class: "form-control", placeholder: "住所" %>
-  <%= f.text_field :address, class: "form-control", placeholder: "宛名" %>
+<div class="container">
+  <div class="row">
+    <h3>配送先登録/一覧</h3>
+      <%= form_for(@shipping_address_new, url: public_shipping_addresses_path, method: :post) do |f| %>
+        郵便番号(ハイフンなし)<%= f.text_field :postal_code, class: "form-control", :style=>"width:150px;" %>
+        住所<%= f.text_field :address, class: "form-control", :style=>"width:600px;" %>
+        宛名<%= f.text_field :address_name, class: "form-control", :style=>"width:150px;" %>
+        <%= f.submit "登録する", class: "btn btn-success btn-outline-danger mx-auto" %>
+      <% end %>
+
+      <table>
+      	<tr>
+      	  <th>郵便番号</th><th>住所</th><th>宛名</th><th></th>
+      	</tr>
+      	<% @shipping_addresses.each do |shipping_address| %>
+      	  <tr>
+            <td><%= shipping_address.postal_code %></td>
+            <td><%= shipping_address.address %></td>
+            <td><%= shipping_address.address_name %></td>
+            <td>
+            <button class="btn btn-primary btn-sm">
+              <%= link_to "編集する", edit_public_shipping_address_path(shipping_address), :style=>"color:white;" %>
+            </button>
+            <button class="btn btn-danger btn-sm">
+              <%= link_to "削除する", public_shipping_address_path(shipping_address), method: :delete, "data-confirm" => "本当に削除しますか？", :style=>"color:white;" %>
+            </button>
+            </td>
+       	  </tr>
+       	<% end %>
+      </table>
+  </div>
+</div>
