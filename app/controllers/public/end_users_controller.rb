@@ -14,7 +14,12 @@ class Public::EndUsersController < ApplicationController
 			redirect_to public_end_users_path, notice: 'successfully updated'
 		else
 			render action: :edit
-		end
+    end
+      if params[:user][:password].blank?
+        params[:user].delete("password")
+      end
+      if @user.update(user_params)
+    end
   end
 
   def withdrawal

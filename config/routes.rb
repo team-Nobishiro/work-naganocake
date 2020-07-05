@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 
   devise_for :end_users, controllers: {
     :registrations => 'public/registrations',
-    :passwords => 'public/passwords'
+    :passwords => 'public/passwords',
+    :sessions => 'public/sessions'
   }
 
   get "public/homes/about" => "public/homes#about"
