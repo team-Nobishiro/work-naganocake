@@ -1,2 +1,0 @@
-class ItemOrdersController < ApplicationController
-end
