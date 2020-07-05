@@ -21,6 +21,21 @@
    background-color: black;
  }
 
+ .clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.box{
+  float: left;
+  display: block;
+  width: 236px;
+  // margin: 0 0 0 40px;
+  // padding: 0;
+}
+
+
  a:hover {
    color: white;
  }
