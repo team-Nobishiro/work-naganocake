@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :shipping_addresses, except: [:new, :show]
     resources :items, only: [:index, :show]
     resources :genres, only: [:show]
+    resources :cart_items
   end
   get "public/end_users/withdrawal" => "public/end_users#withdrawal"
   put "public/end_users/hide" => "public/end_users#hide", as: 'users_hide'
