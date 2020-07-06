@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_141900) do
     t.text "introduction"
     t.string "image_id"
     t.integer "not_taxprice"
-    t.boolean "is_sale_status", default: true
+    t.boolean "is_sale_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "genre_id"

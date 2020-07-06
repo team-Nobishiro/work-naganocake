@@ -20,7 +20,7 @@
       <%= f.text_field :not_taxprice, class: "form-control", :style=>"width:150px;" %>円<br>
 
       <label for="sale_status">販売ステータス</label>
-      <%= f.select :is_sale_status, [['販売中',0],['売切れ',1]], { include_blank: true, selected: 0 } %><br>
+      <%= f.select :is_sale_status, [['販売中',0],['販売停止中',1]], { include_blank: true, selected: 0 } %><br>
 
       <%= f.submit "新規登録", class: "btn btn-primary" %>
     </div>
