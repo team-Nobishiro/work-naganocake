@@ -4,6 +4,8 @@ class Public::HomesController < ApplicationController
   end
 
   def about
+  	@end_users = EndUser.all
+	 @end_user = EndUser.new
     
   end
   
