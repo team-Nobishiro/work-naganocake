@@ -10,8 +10,8 @@
     </div>
 
     <div class="col-xs-9">
-    	<h2 class="title">商品一覧</h2>
-      <% @items.each do |item| %>
+    	<h2 class="title"><%= @genre.name %>一覧</h2>
+      <% @genre.items.each do |item| %>
         <ul class="clearfix">
           <li class="box">
             <%= link_to public_item_path(item.id) do %>

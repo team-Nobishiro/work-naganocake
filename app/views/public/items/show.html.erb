@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <table>
+      	<tr><th>ジャンル検索</th></tr>
+      	  <tr><td>ケーキ</td></tr>
+      	  <tr><td>焼き菓子</td></tr>
+      	  <tr><td>プリン</td></tr>
+      	  <tr><td>キャンディ</td></tr>
+      </table>
+    </div>
+
+    <div class="col-xs-9">
+    	<h2 class="title">商品一覧</h2>
+        <%= attachment_image_tag @item, :image, format: 'jpeg', class: "", fallback: "no_image.jpeg", size: "40x40" %>
+        <%= link_to @item.name, public_item_path(@item.id) %>
+        <%= @item.introduction %>
+        <%= form_for (@cart_item), url: public_cart_items_path do |f| %>
+          <%= f.select :number, [1,2,3,4,5,6,7,8,9,10] %>
+          <%= f.submit "カートに入れる" %>
+        <% end %>
+    </div>
+  </div>
+</div>
