@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :end_users
     resources :items
-    resources :genres, except: [:new, :show, :destroy]
+    resources :genres, except: [:show, :destroy]
   end
 
 
@@ -36,8 +36,4 @@ Rails.application.routes.draw do
   end
   get "public/end_users/withdrawal" => "public/end_users#withdrawal"
   put "public/end_users/hide" => "public/end_users#hide", as: 'users_hide'
-
-
-
-
 end
