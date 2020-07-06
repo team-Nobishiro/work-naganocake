@@ -30,7 +30,11 @@ Rails.application.routes.draw do
   namespace :public do
     resource :end_users
     resources :shipping_addresses, except: [:new, :show]
+    resources :cart_items 
+    resources :items
   end
+
+
   get "public/end_users/withdrawal" => "public/end_users#withdrawal"
   put "public/end_users/hide" => "public/end_users#hide", as: 'users_hide'
 
