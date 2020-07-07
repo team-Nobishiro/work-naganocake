@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <h2>ショッピングカート</h2>
+    </div>
+
+    <div>
+      <%= link_to "カートを空にする", public_cart_items_path, method: :delete, class: "btn btn-danger" %>
+    </div>
+      <table>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
+          </tr>
+        </thead>
+          
+        <% @current_end_user.cart_items.each do |cart_item| %>
+          <body>
+            <tr> 
+              <td>
+               <%= attachment_image_tag cart_item.item, :image, format: "jpeg", fallback: 'noimage.jpg', size: '100x100' %>
+               <%= cart_item.item.name %>
+              </td>
+
+               <td>
+                <%= (cart_item.item.not_taxprice * 1.1).floor %>(<%= cart_item.item.not_taxprice %>)円
+               </td>
+              
+               <td>
+                 <%= form_for(cart_item, url: public_cart_item_path(cart_item), method: :patch) do |f| %>
+                   <div>
+                     <%= f.text_field :number %>
+                     <%= f.submit :編集する, class: "btn btn-primary" %>
+                   </div>
+                 <% end %>
+
+               <td>
+                     <%= (cart_item.subtotal_price * 1.1).floor %>円
+               </td>
+               <td>
+                <%= link_to "削除する", public_cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %>
+               </td>
+             </tr>
+              
+               <% end %>
+             </td>
+
+               
+           </tr>
+        </body>
+      </table>
+    </div>
+
+      <div>
+        <%= link_to "買い物を続ける", public_items_path, class: "btn btn-primary" %>
+      </div>
+      <div>
+        <%= (current_end_user.cart_total_price * 1.1).floor%>円
+      </div>
+      <div>
+
+      </div>
+
+  </div>
+</div>
