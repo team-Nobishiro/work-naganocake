@@ -29,15 +29,16 @@ Rails.application.routes.draw do
 
     resources :items, only: [:index, :show]
     resources :genres, only: [:show]
-    resources :orders, expect: [:edit, :update, :destroy]
+    resources :orders
     resources :cart_items
-　　end
-
+  end
+  get "public/orders/:id/confirm" => "public/orders#confirm", as:'order_confirm'
+   get "public/orders/thank" => "public/orders#thank"
   delete "public/cart_items" => "public/cart_items#destroy_all"
 
 
   get "public/end_users/withdrawal" => "public/end_users#withdrawal"
   put "public/end_users/hide" => "public/end_users#hide", as: 'users_hide'
-
 end
+
 
