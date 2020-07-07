@@ -10,10 +10,25 @@
       </table>
     </div>
 
-    <div class="col-xs-9">
-      <%= attachment_image_tag @item, :image, format: 'jpeg', class: "", fallback: "no_image.jpeg", size: "40x40" %>
-      <%= link_to @item.name, public_item_path(@item.id) %>
-      <%= @item.introduction %>
+    <div class="col-xs-4">
+      <%= attachment_image_tag @item, :image, format: 'jpeg', class: "", fallback: "no_image.jpeg", size: "200x200" %>
+    </div>
+    <div class="col-xs-4">
+      <table class="table table-noborder">
+        <tbody>
+          <tr>
+            <td><%= @item.name %></td>
+          </tr>
+          <tr>
+            <td><%= @item.introduction %></td>
+          </tr>
+          <tr>
+            <td>
+              ￥<%= (@item.not_taxprice * 1.1).floor %>(税込み)
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <%= form_for (@cart_item), url: public_cart_items_path do |f| %>
         <%= f.hidden_field :item_id, :value => @item.id %>
         <%= f.select :number, ["個数選択",1,2,3,4,5,6,7,8,9,10] %>

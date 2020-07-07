@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :items
     resources :genres, except: [:new, :show, :destroy]
     resources :order_items
+    resources :orders, only: [:index, :show, :update]
   end
 
 	get "public/homes/about" => "public/homes#about"
@@ -29,18 +30,21 @@ Rails.application.routes.draw do
   namespace :public do
     resource :end_users
     resources :shipping_addresses, except: [:new, :show]
-
     resources :items, only: [:index, :show]
     resources :genres, only: [:show]
     resources :orders
     resources :cart_items
-  end
-  
-  delete "public/cart_items" => "public/cart_items#destroy_all"
 
+
+
+  end
+
+ 
+  delete "public/cart_items" => "public/cart_items#destroy_all"
 
   get "public/end_users/withdrawal" => "public/end_users#withdrawal"
   put "public/end_users/hide" => "public/end_users#hide", as: 'users_hide'
+  get '/search', to: 'search#search'
 end
 
 
