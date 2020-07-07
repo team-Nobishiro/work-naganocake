@@ -29,8 +29,9 @@ Rails.application.routes.draw do
 
     resources :items, only: [:index, :show]
     resources :genres, only: [:show]
+    resources :orders, expect: [:edit, :update, :destroy]
     resources :cart_items
-  end
+　　end
 
   delete "public/cart_items" => "public/cart_items#destroy_all"
 
