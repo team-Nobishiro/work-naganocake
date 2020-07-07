@@ -14,10 +14,10 @@
         </thead>
 
         <tbody>
-          <% current_end_user.cart_items.each do |cart| %>
+          <% @current_end_user.cart_items.each do |cart| %>
             <tr class="brown-border">
               <td>
-                <%= attachment_image_tag cart.item, :image, :size => '50x50',fallback: "no_image.jpg" %>
+                <%= attachment_image_tag cart.item, :image, :size => '50x50',fallback: "noimage.jpg" %>
                 <span> </span>
                 <%= cart.item.name %>
               </td>
@@ -36,14 +36,22 @@
           <tr class="brown-border">
             <td>送料</td>
             <td>800</td>
+
           </tr>
 
           <tr class="brown-border">
             <td>商品合計</td>
+            <td><%= (current_end_user.cart_total_price * 1.1).floor%>円</td>
           </tr>
 
           <tr class="brown-border">
             <td>請求金額</td>
+
+             <td><%= ((current_end_user.cart_total_price * 1.1) + 800).floor%>円</td>
+            
+
+           
+
           </tr>
 
         </tbody>
@@ -62,12 +70,15 @@
       <div class="row mt-3">
         <strong class="red-border px-3 mr-3">　お届け先　</strong>
         <span class="brown-border px-3">
+
         </span>
       </div>
     </div>
 
     <div class="col-3">
-      <%=link_to "購入を確定する", order_confirm_path, class: "btn btn-success" %>
+
+      <%=link_to "購入を確定する", public_orders_thank_path, class: "btn btn-success" %>
+
     </div>
 
   </div>

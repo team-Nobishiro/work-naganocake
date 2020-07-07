@@ -28,7 +28,7 @@ class Public::OrdersController < ApplicationController
       redirect_to order_confirm_path
     else
       flash[:order_new] = "支払い方法と配送先を選択して下さい"
-      redirect_to public_new_order_path
+      redirect_to new_public_order_path
     end
   end
 
@@ -43,8 +43,7 @@ class Public::OrdersController < ApplicationController
   	
   end
 
-  def thank
-  end
+  
 
   private
   def order_params
