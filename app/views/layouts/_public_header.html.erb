@@ -27,6 +27,12 @@
 							<%= link_to ' ログアウト', destroy_end_user_session_path, method: :delete, :style => "color:white;" %>
 						</button>
 					</li>
+				<% elsif master_signed_in? %>
+					<li><%= link_to ' About', public_homes_about_path, {class: "glyphicon"} %></li>
+					<li><%= link_to ' 商品一覧',public_items_path, {class: "glyphicon"} %></li>
+					<li><%= link_to ' 新規登録', new_end_user_registration_path, {class: "glyphicon"} %></li>
+					<li><%= link_to ' ログイン', new_end_user_session_path, {class: "glyphicon"} %></li>
+					<li><%= link_to ' ログイン', new_end_user_session_path, {class: "glyphicon"} %></li>
 				<% else %>
 					<li><%= link_to ' About', public_homes_about_path, {class: "glyphicon"} %></li>
 					<li><%= link_to ' 商品一覧',public_items_path, {class: "glyphicon"} %></li>
