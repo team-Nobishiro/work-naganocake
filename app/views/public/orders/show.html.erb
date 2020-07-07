@@ -34,15 +34,15 @@
         <tbody>
           <tr>
             <td>商品合計</td>
-            <td></td>
+            <td><%= @order.sub_total_price %></td>
           <tr>
           <tr>
             <td>配送料</td>
-            <td></td>
+            <td><%= 800 %> </td>
           <tr>
           <tr>
             <td>ご請求額</td>
-            <td></td>
+            <td><%= @order.sub_total_price + 800 %> </td>
           <tr>
         </tbody>
       </table>
@@ -62,10 +62,10 @@
         </thead>
         <tbody>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><%= @order.item.name %> </td>
+            <td><%= @order.order_item.tax_price %> </td>
+            <td><%= @order.order_item.number %> </td>
+            <td><%= @order.order_item.tax_price * @order.order_item.number %> </td>
           <tr>
         </tbody>
       </table>
