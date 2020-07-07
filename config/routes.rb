@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     resources :cart_items
   end
 
+  delete "public/cart_items" => "public/cart_items#destroy_all"
+
 
   get "public/end_users/withdrawal" => "public/end_users#withdrawal"
   put "public/end_users/hide" => "public/end_users#hide", as: 'users_hide'
