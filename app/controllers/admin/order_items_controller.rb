@@ -1,4 +1,4 @@
-class Admin::ItemOrdersController < ApplicationController
+class Admin::OrderItemsController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order_item = OrderItem.find(params[:id])

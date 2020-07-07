@@ -10,4 +10,8 @@ class Order < ApplicationRecord
     "発送準備中": 3,
     "発送済": 4
   }
+
+  def sub_total_price
+    (order_item.number * order_item.tax_price)
+  end
 end
