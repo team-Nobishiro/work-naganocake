@@ -21,9 +21,9 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :update]
   end
 
-	get "public/homes/about" => "public/homes#about"
-	get "public/shipping_address" => "public/shipping_addresses#index"  
-
+  get "public/homes/about" => "public/homes#about"
+  get "public/shipping_address" => "public/shipping_addresses#index"  
+ 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "public/orders/:id/confirm" => "public/orders#confirm", as:'order_confirm'
    get "public/orders/thank" => "public/orders#thank"
@@ -34,17 +34,14 @@ Rails.application.routes.draw do
     resources :genres, only: [:show]
     resources :orders
     resources :cart_items
-
-
-
   end
 
- 
   delete "public/cart_items" => "public/cart_items#destroy_all"
 
   get "public/end_users/withdrawal" => "public/end_users#withdrawal"
   put "public/end_users/hide" => "public/end_users#hide", as: 'users_hide'
   get '/search', to: 'search#search'
 end
+
 
 

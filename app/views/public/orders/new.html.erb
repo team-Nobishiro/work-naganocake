@@ -4,14 +4,14 @@
     <h4><strong>　支払い方法</strong></h4>
       <%=form_tag(public_orders_path, method: :post) do %>
         <%= radio_button_tag :payment_way, :クレジットカード %>
-        <%= label_tag :payment_way, "クレジットカード", {value: :"クレジットカード", style: "display: inline-block;"} %><br>
+        <%= label_tag :payment_way, "クレジットカード" %><br>
         <%= radio_button_tag :payment_way, :銀行振込 %>
-        <%= label_tag :payment_way, "銀行振込", {value: :"銀行振込", style: "display: inline-block;"} %><br><br>
+        <%= label_tag :payment_way, "銀行振込" %><br><br>
 
     <h4><strong>　お届け先</strong></h4>
       <div class="address-form">        
         <%= radio_button_tag :select, :my_address %>
-        <%= label_tag :select, "ご自身の住所", {value: :my_address, style: "display: inline-block;"} %><br>
+        <%= label_tag :select, "ご自身の住所", {value: :my_address} %><br>
         <% address = current_end_user.postal_code + current_end_user.address + current_end_user.last_name + current_end_user.first_name %>
         <%= address %><br>
 
