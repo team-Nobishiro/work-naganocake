@@ -12,6 +12,7 @@
       <tr>
         <td><%= user.last_name %><%= user.first_name %></td>
         <td><%= user.last_name_kana %><%= user.first_name_kana %></td>
+        <td><%= link_to '詳細', admin_end_user_path(user.id) %></td>
       </tr>
     <% end %>
   </tbody>
