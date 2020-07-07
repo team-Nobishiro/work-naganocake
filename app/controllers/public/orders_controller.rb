@@ -14,10 +14,10 @@ class Public::OrdersController < ApplicationController
       session[:address] ="〒" +current_end_user.postal_code+current_end_user.address+current_end_user.last_name+current_end_user.first_name
     end
     if session[:address].present? && session[:payment_way].present?
-      redirect_to public_orders_confirm_path
+      redirect_to order_confirm_path
     else
       flash[:order_new] = "支払い方法と配送先を選択して下さい"
-      redirect_to public_new_order_path
+      redirect_to new_public_order_path
     end
   end
 
@@ -32,8 +32,7 @@ class Public::OrdersController < ApplicationController
   	@shipping_address_new = ShippingAddress.new
   end
 
-  def thank
-  end
+  
 
   private
   def order_params

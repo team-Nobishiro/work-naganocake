@@ -14,19 +14,15 @@
         </thead>
 
         <tbody>
-          <% current_end_user.cart_items.each do |cart| %>
+          <% @current_end_user.cart_items.each do |cart| %>
             <tr class="brown-border">
               <td>
-                <%= attachment_image_tag cart.item, :image, :size => '50x50',fallback: "no_image.jpg" %>
+                <%= attachment_image_tag cart.item, :image, :size => '50x50',fallback: "noimage.jpg" %>
                 <span> </span>
                 <%= cart.item.name %>
               </td>
 
-              <td class="align-middle"><%= (cart.item.price * 1.1).floor %></td>
-
-              <td class="align-middle"><%= cart.quantity %></td>
-
-              <td class="align-middle"><%= (cart.item.price * 1.1).floor * cart.quantity %></td>
+             
             </tr>
           <% end %>
         </tbody>
@@ -41,16 +37,20 @@
           <tr class="brown-border">
             <td>送料</td>
             <td>800</td>
+
           </tr>
 
           <tr class="brown-border">
             <td>商品合計</td>
-            <td><%= @total_price %></td>
+            <td><%= (current_end_user.cart_total_price * 1.1).floor%>円</td>
           </tr>
 
           <tr class="brown-border">
             <td>請求金額</td>
-            <td><%= @total_price + 800 %></td>
+             <td><%= ((current_end_user.cart_total_price * 1.1) + 800).floor%>円</td>
+            
+
+           
           </tr>
 
         </tbody>
@@ -69,18 +69,13 @@
       <div class="row mt-3">
         <strong class="red-border px-3 mr-3">　お届け先　</strong>
         <span class="brown-border px-3">
-          <% if  session[:address].length < 8 %>
-           <%= "〒" + @address.post_code + "  " + @address.address + "  " + @address.last_name + @address.first_name %><span>様</span>
-
-          <% else %>
-            <%= session[:address] %><span>様</span>
-          <% end %>
+          
         </span>
       </div>
     </div>
 
     <div class="col-3">
-      <%=link_to "購入を確定する", public_orders_create_order_path, class: "btn btn-success" %>
+      <%=link_to "購入を確定する", public_orders_thank_path, class: "btn btn-success" %>
     </div>
 
   </div>
