@@ -24,6 +24,7 @@ class Public::OrdersController < ApplicationController
     elsif params[:select] == "my_address"
       session[:address] ="〒" +current_end_user.postal_code+current_end_user.address+current_end_user.last_name+current_end_user.first_name
     end
+    
     if session[:address].present? && session[:payment_way].present?
       redirect_to order_confirm_path
     else
@@ -34,6 +35,9 @@ class Public::OrdersController < ApplicationController
 
   def confirm
   	@orders = current_end_user.orders
+  end
+  
+  def thank
   end
 
   def index
