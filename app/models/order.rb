@@ -6,4 +6,16 @@ class Order < ApplicationRecord
 		(end_user.cart_total_price + 800)
 	end
   
+
+  enum select:{
+    "入金待ち": 0,
+    "入金確認": 1,
+    "制作中": 2,
+    "発送準備中": 3,
+    "発送済": 4
+  }
+
+  def sub_total_price
+    (order_item.number * order_item.tax_price)
+  end
 end

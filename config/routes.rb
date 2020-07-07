@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :end_users
     resources :items
     resources :genres, except: [:new, :show, :destroy]
+    resources :orders, only: [:index, :show, :update]
+    resources :item_orders, only: [:update]
   end
 
 	get "public/homes/about" => "public/homes#about"
@@ -26,19 +28,24 @@ Rails.application.routes.draw do
   namespace :public do
     resource :end_users
     resources :shipping_addresses, except: [:new, :show]
-
     resources :items, only: [:index, :show]
     resources :genres, only: [:show]
     resources :orders
     resources :cart_items
+
+
+
   end
   get "public/orders/:id/confirm" => "public/orders#confirm", as:'order_confirm'
    get "public/orders/thank" => "public/orders#thank"
+
   delete "public/cart_items" => "public/cart_items#destroy_all"
 
+  get "public/orders/:id/confirm" => "public/orders#confirm", as: 'order_confirm'
 
   get "public/end_users/withdrawal" => "public/end_users#withdrawal"
   put "public/end_users/hide" => "public/end_users#hide", as: 'users_hide'
+  get '/search', to: 'search#search'
 end
 
 

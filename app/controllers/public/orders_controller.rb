@@ -1,4 +1,15 @@
 class Public::OrdersController < ApplicationController
+  def index
+    # @orders = Order.order('id DESC').limit(8)
+    @end_user = current_end_user
+    @orders = current_end_user.orders.order(created_at: :desc)
+  end
+  
+  def show
+    @order = current_end_user.orders.find(params[:id])
+    @end_user = EndUser.find(params[:id])
+    @shipping_address_new = ShippingAddress.new
+  end
 
   def new
   	@order = Order.new
@@ -29,14 +40,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-  	@shipping_address_new = ShippingAddress.new
+  	
   end
 
   
 
   private
   def order_params
-  	params.require(:order).permit(:end_user_id, :select, :toral_price, :send_price, :payment_way)
+    params.require(:order).permit(:end_user_id, :select, :toral_price, :send_price,
+                                  :payment_way, :postal_code, :address, :address_name)
   end
   def shipping_address_params
   	params.require(:shipping_address).permit(:postal_code, :address, :address_name)

@@ -1,0 +1,74 @@
+<div class="container">
+  <h2>注文履歴詳細</h2>
+  <div class="row mt-1">
+    <div>
+      <p>注文情報</p>
+      <table class="table table-hover">
+        <tbody>
+          <tr>
+            <td>注文日</td>
+            <td><%= @order.created_at.strftime('%Y年%m月%d日') %> </td>
+          <tr>
+          <tr>
+            <td>配送先</td>
+            <td>
+              <%= @order.postal_code %><br>
+              <%= @order.address %> <br>
+              <%= @order.address_name %>
+            </td>
+          <tr>
+          <tr>
+            <td>支払方法</td>
+            <td><%= @order.payment_way %></td>
+          <tr>
+          <tr>
+            <td>ステータス</td>
+            <td><%= @order.select %> </td>
+          <tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <p>請求情報</p>
+      <table class="table table-hover">
+        <tbody>
+          <tr>
+            <td>商品合計</td>
+            <td><%= @order.sub_total_price %></td>
+          <tr>
+          <tr>
+            <td>配送料</td>
+            <td><%= 800 %> </td>
+          <tr>
+          <tr>
+            <td>ご請求額</td>
+            <td><%= @order.sub_total_price + 800 %> </td>
+          <tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row mt-1">
+    <div>
+      <p>注文内容</p>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>商品</th>
+            <th>単価（税込）</th>
+            <th>個数</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @order.item.name %> </td>
+            <td><%= @order.order_item.tax_price %> </td>
+            <td><%= @order.order_item.number %> </td>
+            <td><%= @order.order_item.tax_price * @order.order_item.number %> </td>
+          <tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
