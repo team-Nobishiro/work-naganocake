@@ -40,7 +40,7 @@
             <th>数量</th>
             <th>小計</th>
             <th>制作ステータス</th>
-            <th>注文詳細</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -49,7 +49,12 @@
               <td><%= o.order_item.tax_price %></td>
               <td><%= o.order_item.number %></td>
               <td><%= (o.order_item.tax_price * o.order_item.number) %></td>
-              <td></td>
+              <td>
+                <%= form_with model: @order_item do |f| %>
+                  <%= f.select :select, OrderItem.productions.keys.to_a, include_blank: false %>
+                  <%= f.submit "更新" %>
+                <% end %>
+              </td>
               <td></td>
             </tr>
         </tbody>
