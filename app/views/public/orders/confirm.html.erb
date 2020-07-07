@@ -14,13 +14,16 @@
         </thead>
 
         <tbody>
+
           <% current_end_user.cart_items.each do |cart| %>
             <tr>
               <td>
                 <%= attachment_image_tag cart.item, :image, :size => '50x50' %>
+
                 <span> </span>
                 <%= cart.item.name %>
               </td>
+
 
               <td class="align-middle"><%= (cart.item.not_taxprice * 1.1).floor %></td>
 
@@ -41,15 +44,17 @@
           <tr>
             <td>送料</td>
             <td>800</td>
+
           </tr>
 
           <tr>
             <td>商品合計</td>
-            <td><%= current_end_user.cart_total_price %></td>
+            <td><%= (current_end_user.cart_total_price * 1.1).floor%>円</td>
           </tr>
 
           <tr>
             <td>請求金額</td>
+
             <td><%= current_end_user.cart_total_price + 800 %></td>
           </tr>
 
@@ -69,18 +74,16 @@
       <div class="row mt-3">
         <strong class="red-border px-3 mr-3">　お届け先　</strong>
         <span class="brown-border px-3">
+
           <% if  session[:address].length < 8 %>
            <%= "〒" + current_end_user.postal_code + "  " + current_end_user.address + "  " + current_end_user.last_name + current_end_user.first_name %><span>様</span>
-
-          <% else %>
-            <%= session[:address] %><span>様</span>
-          <% end %>
+ 
         </span>
       </div>
     </div>
 
     <div class="col-3">
-      <%=link_to "購入を確定する", "public_orders_thanks", class: "btn btn-success" %>
+      <%=link_to "購入を確定する", public_orders_thank_path, class: "btn btn-success" %>
     </div>
 
   </div>
