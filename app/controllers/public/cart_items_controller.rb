@@ -1,23 +1,24 @@
 class Public::CartItemsController < ApplicationController
 
  def index
-   @cart_items = current_end_user.cart_items
-   
-   @cart_item = CartItem.new
+    @cart_items = current_end_user.cart_items
+    @cart_item = CartItem.new
  end
 
  def create
   @cart_item = CartItem.new(cart_item_params)
-  @cart_item.end_user_id = current_end_user.id
+  if end_user_signed_in?
+    @cart_item.end_user_id = current_end_user.id
     if @cart_item.save
       redirect_to public_cart_items_path
     end
+  else
+    redirect_to new_end_user_session_path
+  end
  end
  def update
  	@cart_item = CartItem.find(params[:id])
-
  	@cart_item.update(cart_item_params)
- 
  	redirect_to public_cart_items_path
  end
 
