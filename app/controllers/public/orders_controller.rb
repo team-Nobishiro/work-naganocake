@@ -6,8 +6,6 @@ class Public::OrdersController < ApplicationController
   
   def show
     @order = current_end_user.orders.find(params[:id])
-    @end_user = EndUser.find(params[:id])
-    @shipping_address_new = ShippingAddress.new
   end
 
   def new
@@ -60,6 +58,7 @@ class Public::OrdersController < ApplicationController
     @order.select = 0
     @order.end_user_id = current_end_user.id
     @order.toral_price = current_end_user.cart_total_price
+    @order.send_price = 800
     @order.save
     @cart_items = current_end_user.cart_items.all
     @cart_items.each do |cart_item|
