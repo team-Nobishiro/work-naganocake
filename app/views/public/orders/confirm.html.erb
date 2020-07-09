@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
     <h3>注文情報確認</h3>
-<%= form_for (@order), url: public_orders_thank_path do |f| %>
       <table class="table table-noborder">
         <thead>
           <tr>
@@ -81,10 +80,7 @@
     </div>
 
     <div class="col-3">
-      
-        <%= f.hidden_field :address, :value => "hoge" %>
-        <%= f.submit "購入を確定する", class: "btn btn-success" %>
-      <% end %>
+      <%=link_to "購入を確定する", public_orders_path, method: :post, class: "btn btn-success" %>
     </div>
 
     </div>
