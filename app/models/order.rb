@@ -5,7 +5,12 @@ class Order < ApplicationRecord
 
 	def seikyu
 		(end_user.cart_total_price + 800)
-	end
+  end
+  
+  enum payment_way:{
+    "クレジットカード": 0,
+    "銀行振込": 1
+  }
   
 
   enum select:{
