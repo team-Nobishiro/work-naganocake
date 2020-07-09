@@ -1,15 +1,11 @@
 class Public::OrdersController < ApplicationController
   def index
     # @orders = Order.order('id DESC').limit(8)
-    @end_user = current_end_user
-    @orders = current_end_user.orders.order(created_at: :desc)
+    
+    @orders = current_end_user.where(end_user_id :current_end_user)
   end
   
-  def show
-    @order = current_end_user.orders.find(params[:id])
-    @end_user = EndUser.find(params[:id])
-    @shipping_address_new = ShippingAddress.new
-  end
+  
 
   def new
   	@order = Order.new
@@ -29,7 +25,6 @@ class Public::OrdersController < ApplicationController
     @postal_code = @shipping_addresses.postal_code
     @address = @shipping_addresses.address
     @address_name = @shipping_addresses.address_name
- 
     elsif params[:select] == "my_address"
       session[:address] ="〒" +current_end_user.postal_code+current_end_user.address+current_end_user.last_name+current_end_user.first_name
     @postal_code = current_end_user.postal_code
@@ -45,7 +40,7 @@ class Public::OrdersController < ApplicationController
     end
     
     if session[:address].present? && session[:payment_way].present?
-      # redirect_to order_confirm_path
+      redirect_to order_confirm_path
     else
 
       flash[:order_new] = "支払い方法または配送先を選択して下さい"
@@ -53,9 +48,15 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-  # def confirm
-  	# @orders = current_end_user.orders
-  # end
+   #def confirm
+  #	 @order = current_end_user.find(params[:payment_way])
+
+  #end
+  def show
+    @order = current_end_user.orders.find(params[:id])
+    @end_user = EndUser.find(params[:id])
+    @shipping_address_new = ShippingAddress.new
+  end
   
   def thank
   end
