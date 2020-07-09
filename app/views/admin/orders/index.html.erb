@@ -15,7 +15,7 @@
           <tr>
             <td><%= o.created_at.strftime('%Y/%m/%d %H:%M') %></td>
             <td><%= o.end_user.last_name + o.end_user.first_name %></td>
-            <td><%=  %></td>
+            <td><%= @order_items %></td>
             <td><%= o.select %></td>
           </tr>
         <% end %>

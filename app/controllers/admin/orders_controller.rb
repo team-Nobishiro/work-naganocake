@@ -2,6 +2,7 @@ class Admin::OrdersController < ApplicationController
   def index
     # @orders = Order.order('id DESC').limit(8)
     @orders = Order.all.page(params[:page]).per(10)
+    @order_items = OrderItem.all
   end
   
   def show
