@@ -5,7 +5,8 @@ class Public::OrdersController < ApplicationController
   end
   
   def show
-    @order = current_end_user.orders.find(params[:id])
+    @orders = current_end_user.orders
+    @order = Order.find(params[:id])
   end
 
   def new
@@ -65,8 +66,8 @@ class Public::OrdersController < ApplicationController
       @order_items = @order.order_items.new
       @order_items.item_id = cart_item.item.id
       @order_items.item.name = cart_item.item.name
-      # @order_items.price = cart_item.item.price
-      # @order_items.quantity = cart_item.quantity
+      @order_items.tax_price = cart_item.item.not_taxprice * 1.1
+      @order_items.number = cart_item.number
       @order_items.save
     end
     @cart_items = current_end_user.cart_items

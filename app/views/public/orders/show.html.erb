@@ -67,9 +67,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><%= @order.items.name %> </td>
-          <tr>
+          <% @order.order_items.each do |o| %>
+            <tr>
+              <th><%= o.item.name %></th>
+              <th><%= o.tax_price %></th>
+              <th><%= o.number %></th>
+              <th><%= o.number * o.tax_price %></th>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
