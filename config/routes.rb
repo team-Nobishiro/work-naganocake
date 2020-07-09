@@ -26,7 +26,7 @@ Rails.application.routes.draw do
  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   post "public/orders/confirm" => "public/orders#confirm", as:'order_confirm'
-  get "public/orders/thank" => "public/orders#thank"
+  post "public/orders/thank" => "public/orders#thank"
   namespace :public do
     resource :end_users
     resources :shipping_addresses, except: [:new, :show]

@@ -2,7 +2,8 @@ class Public::OrdersController < ApplicationController
   def index
     # @orders = Order.order('id DESC').limit(8)
     @end_user = current_end_user
-    @orders = current_end_user.orders.order(created_at: :desc)
+    # @orders = current_end_user.orders.order(created_at: :desc)
+    @orders = current_end_user.orders
   end
   
   def show
@@ -29,6 +30,7 @@ class Public::OrdersController < ApplicationController
     @postal_code = @shipping_addresses.postal_code
     @address = @shipping_addresses.address
     @address_name = @shipping_addresses.address_name
+
  
     elsif params[:select] == "my_address"
       session[:address] ="〒" +current_end_user.postal_code+current_end_user.address+current_end_user.last_name+current_end_user.first_name
@@ -58,6 +60,8 @@ class Public::OrdersController < ApplicationController
   # end
   
   def thank
+    @order = Order.new
+    @order.save
   end
 
   def index
