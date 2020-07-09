@@ -18,33 +18,36 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @order = Order.new
-  	session[:payment_way] = params[:payment_way]
+    session[:order] = Order.new
+  	session[:order][:payment_way] = params[:payment_way]
     @send_price = 800
     @toral_price = current_end_user.cart_total_price + @send_price
     @end_user_id = current_end_user.id
 
     if params[:select] == "select_address"
-    @shipping_addresses = ShippingAddress.find(params[:address])
-    @postal_code = @shipping_addresses.postal_code
-    @address = @shipping_addresses.address
-    @address_name = @shipping_addresses.address_name
+      shipping_address = ShippingAddress.find(params[:address])
+      session[:order][:address] = shipping_address.address
+      session[:order][:address_name] = shipping_address.address_name
+      session[:order][:postal_code] = shipping_address.postal_code
  
     elsif params[:select] == "my_address"
-      session[:address] ="〒" +current_end_user.postal_code+current_end_user.address+current_end_user.last_name+current_end_user.first_name
-    @postal_code = current_end_user.postal_code
-    @address = current_end_user.address
-    @address_name = current_end_user.last_name+current_end_user.first_name
-
-    else params[:select] == "new_address"
-      session[:address] = params[:shipping_address]
-    @postal_code = params[:shipping_address][:postal_code]
-    @address = params[:shipping_address][:address]
-    @address_name = params[:shipping_address][:address_name]
- 
-    end
+      # session[:address] ="〒" +current_end_user.postal_code+current_end_user.address+current_end_user.last_name+current_end_user.first_name
+      session[:order][:address] = current_end_user.address
+      session[:order][:address_name] = current_end_user.address_name
+      session[:order][:postal_code] = current_end_user.postal_code
     
-    if session[:address].present? && session[:payment_way].present?
+    else params[:select] == "new_address"
+      session[:order][:address] = params[:shipping_address][:address]
+      session[:order][:address_name] = params[:shipping_address][:address_name]
+      session[:order][:postal_code] = params[:shipping_address][:postal_code]
+     
+    end
+
+    @postal_code = session[:order][:postal_code]
+    @address = session[:order][:address]
+    @address_name = session[:order][:address_name]
+    
+    if session[:order][:address].present? && session[:order][:payment_way].present?
       # redirect_to order_confirm_path
     else
 
@@ -52,6 +55,14 @@ class Public::OrdersController < ApplicationController
       redirect_to public_new_order_path
     end
   end
+
+  def create
+    @order = Order.new(session[:order])
+    @order.select = 0
+    @order.end_user_id = current_end_user.id
+    @order.save
+    redirect_to public_orders_thank_path
+  end 
 
   # def confirm
   	# @orders = current_end_user.orders

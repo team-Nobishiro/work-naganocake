@@ -42,6 +42,3 @@ Rails.application.routes.draw do
   put "public/end_users/hide" => "public/end_users#hide", as: 'users_hide'
   get '/search', to: 'search#search'
 end
-
-
-
