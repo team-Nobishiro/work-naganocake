@@ -6,8 +6,15 @@ class Public::ItemsController < ApplicationController
   end
   
   def show
-    @item = Item.find(params[:id])
-    @cart_item = CartItem.new
+    # if end_user_signed_in?
+      @item = Item.find(params[:id])
+      @cart_item = CartItem.new
+    # else
+    #   @genres = Genre.all
+    #   @items = Item.all
+    #   flash.now[:notice] = '会員登録をしてください'
+    #   render :index
+    # end
   end
 
   # def select_genre

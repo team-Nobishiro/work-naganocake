@@ -12,13 +12,20 @@
           <th>注文詳細</th>
         </tr>
       </thead>
+
       <tbody>
         <% @orders.each do |o| %>
           <tr>
             <td><%= o.created_at.strftime('%Y/%m/%d %H:%M') %></td>
             <td><%= o.address %></td>
-            <td><%= o.order_item.name %></td>
-            
+            <td>
+              <% o.items.each do |i| %>
+                <li>
+                  <%= i.name %>
+                </li>
+              <% end %>
+            </td>
+            <td><%= o.toral_price %></td>
             <td><%= o.select %></td>
             <td><%= link_to "表示する", "#" %></td>
           </tr>

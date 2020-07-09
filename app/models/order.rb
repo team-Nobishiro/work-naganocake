@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :end_user
-	has_many :order_items, dependent: :destroy
+  has_many :order_items, dependent: :destroy
+  has_many :items, through: :order_items
 
 	def seikyu
 		(end_user.cart_total_price + 800)

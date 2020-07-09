@@ -59,6 +59,9 @@
         <%= link_to "買い物を続ける", public_items_path, class: "btn btn-primary" %>
       </div>
       <div>
+        <%= link_to "注文入力画面", new_public_order_path, class: "btn btn-primary" %>
+      </div>
+      <div>
         <%= (current_end_user.cart_total_price * 1.1).floor%>円
       </div>
       <div>
