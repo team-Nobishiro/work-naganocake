@@ -13,7 +13,11 @@ class Public::CartItemsController < ApplicationController
       redirect_to public_cart_items_path
     end
   else
-    redirect_to new_end_user_session_path
+    @genres = Genre.all
+    @items = Item.all
+    flash.now[:alert] = '会員登録をしてください'
+    render 'public/items/index'
+    # redirect_to public_items_path
   end
  end
  def update
@@ -36,9 +40,9 @@ class Public::CartItemsController < ApplicationController
  end
  
 
- private
- def cart_item_params
-   params.require(:cart_item).permit(:end_user_id, :item_id, :number)
- end
+  private
+  def cart_item_params
+     params.require(:cart_item).permit(:end_user_id, :item_id, :number)
+  end
 
 end
