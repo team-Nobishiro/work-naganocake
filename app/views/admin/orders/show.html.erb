@@ -5,7 +5,7 @@
       <tbody>
         <tr>
           <td>購入者</td>
-          <td><%= link_to @order.end_user.name, admin_end_users_path(@end_user) %></td>
+           <td><%= (@order.end_user.last_name) +  (@order.end_user.first_name)%></td>
         </tr>
         <tr>
           <td>配送先</td>
@@ -21,17 +21,19 @@
         <tr>
           <td>注文ステータス</td>
           <td>
-            <%= form_with model: @order do |f| %>
+            <%= form_with model: @order,url: admin_order_path, method: :patch  do |f| %>
               <%= f.select :select, Order.selects.keys.to_a, include_blank: false %>
               <%= f.submit "更新" %>
             <% end %>
           </td>
+          
         </tr>
       </tbody>
     </table>
   </div>
   <div class="row mt-1">
-    <% @orders.each do |o| %>
+    <% @order.order_items.each do |o| %>
+
       <table class="table table-hover">
         <thead>
           <tr>
@@ -45,13 +47,13 @@
         </thead>
         <tbody>
             <tr>
-              <td><%= o.order_item.item.name %></td>
-              <td><%= o.order_item.tax_price %></td>
-              <td><%= o.order_item.number %></td>
-              <td><%= (o.order_item.tax_price * o.order_item.number) %></td>
+              <td><%= o.item.name %></td>
+              <td><%= (o.item.not_taxprice * 1.1).floor %>円</td>
+              <td><%= o.number %></td>
+              <td><%= (o.item.not_taxprice * 1.1).floor + (o.number) %>円</td>
               <td>
-                <%= form_with model: @order_item do |f| %>
-                  <%= f.select :select, OrderItem.productions.keys.to_a, include_blank: false %>
+                <%= form_with model: o,url: admin_order_item_path,method: :patch  do |f| %>
+                  <%= f.select :production, OrderItem.productions.keys.to_a, include_blank: false %>
                   <%= f.submit "更新" %>
                 <% end %>
               </td>
@@ -59,9 +61,7 @@
             </tr>
         </tbody>
       </table>
-      <p><span>商品合計</span><%= o.sub_total_price %> </p>
-      <p><span>送料</span><%= o.send_price %> </p>
-      <p><span>請求金額合計</span><%= ( o.sub_total_price + o.send_price ) %></p>
+      
     <% end %>
   </div>
 </div>

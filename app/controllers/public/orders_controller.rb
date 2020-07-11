@@ -68,6 +68,7 @@ class Public::OrdersController < ApplicationController
       @order_items.item.name = cart_item.item.name
       @order_items.tax_price = cart_item.item.not_taxprice * 1.1
       @order_items.number = cart_item.number
+      @order_items.production = 0
       @order_items.save
     end
     @cart_items = current_end_user.cart_items

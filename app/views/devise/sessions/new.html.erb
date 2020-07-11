@@ -1,17 +1,4 @@
-<<<<<<< HEAD
 
-<div class="container-fluid">
-<div class="row">
-  <div class="col-sm-2">
-  </div>
-
- <div class="col-sm-8">
-<h2>Log in</h2>
-<%= flash[:error] %>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メール %><br />
-=======
 <div class="container">
   
   <div class="row">
@@ -22,16 +9,11 @@
    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :メールアドレス %><br />
->>>>>>> 0741cfd983683107f2a7fde1e7345689110dad90
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-<<<<<<< HEAD
-    <%= f.label :パスワード%><br />
-=======
     <%= f.label :パスワード（6文字以上） %><br />
->>>>>>> 0741cfd983683107f2a7fde1e7345689110dad90
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
@@ -45,12 +27,8 @@
 
 <%= render "devise/shared/links" %>
 </div>
-<<<<<<< HEAD
 <div class="col-sm-2">
   </div>
 </div>
 </div>
-=======
-</div>
-</div>
->>>>>>> 0741cfd983683107f2a7fde1e7345689110dad90
+

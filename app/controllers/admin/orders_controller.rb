@@ -1,13 +1,21 @@
 class Admin::OrdersController < ApplicationController
-  def index
+  def index   
     # @orders = Order.order('id DESC').limit(8)
     @orders = Order.all.page(params[:page]).per(10)
     @order_items = OrderItem.all
   end
   
   def show
+    @orders = current_end_user.orders 
     @order = Order.find(params[:id])
-    @end_user = EndUser.find(params[:id])
+  end
+ def update
+    @order = Order.find(params[:id])
+    if @order.update(order_params)
+      redirect_to "/"
+    else
+      redirect_to admin_order_path(order)
+    end
   end
 
   private
