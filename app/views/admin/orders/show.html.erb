@@ -31,37 +31,38 @@
     </table>
   </div>
   <div class="row mt-1">
-    <% @order.items.each do |o| %>
-      <table class="table table-hover">
-        <thead>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>制作ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.order_items.each do |oi| %>
           <tr>
-            <th>商品名</th>
-            <th>単価（税込）</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th>制作ステータス</th>
-            <th></th>
+            <td><%= oi.item.name %></td>
+            <td><%= oi.tax_price %></td>
+            <td><%= oi.number %></td>
+            <td><%= (oi.tax_price * oi.number) %></td>
+            <td>
+              <%= form_with model: @admin_order_item do |f| %>
+                <%= f.select :select, OrderItem.productions.keys.to_a, include_blank: false %>
+                <%= f.submit "更新" %>
+              <% end %>
+            </td>
+            <td></td>
           </tr>
-        </thead>
-        <tbody>
-            <tr>
-              <td><%= o.name %></td>
-              <td><%= o.order_item.tax_price %></td>
-              <td><%= o.order_item.number %></td>
-              <td><%= (o.order_item.tax_price * o.order_item.number) %></td>
-              <td>
-                <%= form_with model: @order_item do |f| %>
-                  <%= f.select :select, OrderItem.productions.keys.to_a, include_blank: false %>
-                  <%= f.submit "更新" %>
-                <% end %>
-              </td>
-              <td></td>
-            </tr>
-        </tbody>
+        <% end %>
+      </tbody>
       </table>
-      <p><span>商品合計</span><%= o.sub_total_price %> </p>
-      <p><span>送料</span><%= o.send_price %> </p>
-      <p><span>請求金額合計</span><%= ( o.sub_total_price + o.send_price ) %></p>
-    <% end %>
+      <p><span>商品合計</span><%=  %> </p>
+      <p><span>送料</span><%=  %> </p>
+      <p><span>請求金額合計</span><%=  %></p>
   </div>
 </div>
+<tbody>
