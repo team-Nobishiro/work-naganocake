@@ -22,7 +22,6 @@ class Admin::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:end_user_id, :select, :toral_price, :send_price,
-                                  :payment_way, :postal_code, :address, :address_name)
+    params.require(:order).permit(:select)
   end
 end
