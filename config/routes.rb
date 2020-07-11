@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get "public/shipping_address" => "public/shipping_addresses#index"  
  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  post "public/orders/confirm" => "public/orders#confirm", as:'order_confirm'
+  get "public/orders/confirm" => "public/orders#confirm", as:'order_confirm'
 
   get "public/orders/thank" => "public/orders#thank"
 
