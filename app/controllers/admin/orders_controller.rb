@@ -9,6 +9,7 @@ class Admin::OrdersController < ApplicationController
   def show
     @orders = current_end_user.orders 
     @order = Order.find(params[:id])
+    @count = 0
   end
  def update
     @order = Order.find(params[:id])
