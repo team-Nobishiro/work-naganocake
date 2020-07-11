@@ -1,6 +1,4 @@
 class Public::OrdersController < ApplicationController
-  protect_from_forgery except: :new
-  
   def index
     @end_user = current_end_user
     @orders = current_end_user.orders.order(created_at: :desc)

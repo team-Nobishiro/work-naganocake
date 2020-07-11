@@ -28,13 +28,23 @@
  table {
    width: 80%;
  }
+ ktable {
+   width: 50%;
+ }
+ 
 
  table, th {
    border: 1px solid white;
    padding: 10px;
  }
+ ktable, th {
+   border: 1px solid white;
+   padding: 10px;
+ }
+
 
  table, td {
+  border: 1px solid white;
    padding: 10px;
  }
 
@@ -62,6 +72,10 @@
    font-size: 12px;
    line-height: 1.428571429;
    border-radius: 15px;
+ }
+ div {
+ margin: 20px 20px 20px 20px;
+ 
  }
 
 // ページネーション
