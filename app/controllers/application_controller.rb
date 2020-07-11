@@ -18,9 +18,9 @@ before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_out_path_for(resource)
     case resource
-    when EndUser
+    when :end_user
       root_path
-    when Master
+    when :master
       new_master_session_path
     end
   end
