@@ -5,9 +5,9 @@ class CartItem < ApplicationRecord
 	
    
    
-   def subtotal_price
-		(number * item.not_taxprice) 
-	end
+  def subtotal_price
+	(number * item.not_taxprice) 
+  end
 
 	
 end

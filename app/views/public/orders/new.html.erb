@@ -9,6 +9,8 @@
         <%= radio_button_tag :payment_way, :銀行振込 %>
         <%= label_tag :payment_way, "銀行振込" %><br><br>
 
+        <%= hidden_field_tag(:user_id, current_end_user.id) %>
+
     <h4><strong>　お届け先</strong></h4>
       <div class="address-form">        
         <%= radio_button_tag :select, :my_address %>

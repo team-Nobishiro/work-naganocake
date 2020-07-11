@@ -1,0 +1,61 @@
+<nav class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+  	<nav class="nav navbar-nav navbar-left">
+  	  <div class="logo"><img src="assets/logo.jpg" width="17%" height="20%"></div>
+  	</nav>
+		<nav>
+			<ul class="nav navbar-nav navbar-right">
+				<% if master_signed_in? %>
+						<button type="button" class="btn btn-danger">
+							<%= link_to ' 商品一覧', admin_items_path, :style => "color:white;" %>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger">
+							<%= link_to ' 会員一覧', admin_end_users_path, :style => "color:white;" %>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger">
+							<%= link_to ' 注文履歴一覧', admin_orders_path, :style => "color:white;" %>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger">
+							<%= link_to ' ジャンル一覧', "#", method: :delete, :style => "color:white;" %>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger">
+							<%= link_to ' ログアウト', destroy_master_session_path, method: :delete, :style => "color:white;" %>
+						</button>
+					</li>
+					<div class="search-form">
+						<%= form_tag(search_path, method: :get) do %>
+							<%= text_field_tag 'search[content]' %>
+							<%= select_tag 'search[model]', options_for_select({ "会員" => "end_user", "商品" => "item" }) %>
+							<%= select_tag 'search[method]', options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
+							<%= submit_tag 'search' %>
+						<% end %>
+					</div>
+				<% else %>
+				    <li>
+						<button type="button" class="btn btn-danger">
+							<%= link_to ' 商品一覧', admin_items_path, :style => "color:white;" %>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger">
+							<%= link_to ' 新規登録', new_master_registration_path, method: :delete, :style => "color:white;" %>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger">
+							<%= link_to ' ログイン', master_session_path, method: :delete, :style => "color:white;" %>
+						</button>
+					</li>
+				<% end %>
+			</ul>
+		</nav>
+  </div>
+</nav>

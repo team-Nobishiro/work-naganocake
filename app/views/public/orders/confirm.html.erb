@@ -1,6 +1,9 @@
 <div class="container">
   <div class="row">
     <h3>注文情報確認</h3>
+
+    <%= hidden_field_tag(:user_id, @end_user.id) %>
+
       <table class="table table-noborder">
         <thead>
           <tr>
@@ -13,7 +16,7 @@
 
         <tbody>
 
-          <% current_end_user.cart_items.each do |cart| %>
+          <% @end_user.cart_items.each do |cart| %>
             <tr>
               <td>
                 <%= attachment_image_tag cart.item, :image, :size => '50x50' %>
@@ -27,7 +30,7 @@
 
               <td><%= cart.number %></td>
 
-              <td><%= current_end_user.cart_total_price %></td>
+              <td><%= @end_user.cart_total_price %></td>
             </tr>
           <% end %>
         </tbody>
@@ -41,19 +44,19 @@
         <tbody>
           <tr>
             <td>送料</td>
-            <td>800</td>
+            <td>800円</td>
 
           </tr>
 
           <tr>
             <td>商品合計</td>
-            <td><%= (current_end_user.cart_total_price * 1.1).floor%>円</td>
+            <td><%= (@end_user.cart_total_price * 1.1).floor%>円</td>
           </tr>
 
           <tr>
             <td>請求金額</td>
 
-            <td><%= current_end_user.cart_total_price + 800 %></td>
+            <td><%= (@end_user.cart_total_price * 1.1).floor + 800 %>円</td>
           </tr>
 
         </tbody>

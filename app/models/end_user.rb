@@ -14,7 +14,7 @@ class EndUser < ApplicationRecord
     super && (self.is_withdrawal == false)
   end
   def cart_total_price
-    cart_items.joins(:item).sum("cart_items.number * items.not_taxprice")
+    self.cart_items.joins(:item).sum("cart_items.number * items.not_taxprice")
   end
 
   has_many :shipping_addresses 

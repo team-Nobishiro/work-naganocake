@@ -12,7 +12,11 @@
   </head>
 
   <body>
-    <%= render "layouts/public_header" %>
+    <% if end_user_signed_in? %>
+      <%= render "layouts/public_header" %>
+    <% else %>
+      <%= render "layouts/admin_header" %>
+    <% end %>
     <% if flash[:notice] %>
       <div class="flash">
         <%= flash[:notice] %>
