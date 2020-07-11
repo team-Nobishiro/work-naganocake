@@ -1,0 +1,5 @@
+<div class="container">
+  <div class="row">
+    <h1>本日の注文件数<%= @orders.group("date(created_at)").select("date(created_at)").count %>件</h1>
+  </div>
+</div>

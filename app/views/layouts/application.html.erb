@@ -13,11 +13,6 @@
 
   <body>
     <%= render "layouts/public_header" %>
-    <% if flash[:notice] %>
-      <div class="flash">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
       <%= yield %>
     <%= render "layouts/public_footer" %>
   </body>

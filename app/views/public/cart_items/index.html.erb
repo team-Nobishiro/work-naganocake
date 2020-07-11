@@ -1,8 +1,7 @@
-<div class="container">
+<div class="container-field">
   <div class="row">
-    <div>
+    <div class="col-md-10 col-md-offset-1">
       <h2>ショッピングカート</h2>
-    </div>
 
     <div>
       <%= link_to "カートを空にする", public_cart_items_path, method: :delete, class: "btn btn-danger" %>
@@ -53,20 +52,25 @@
            </tr>
         </body>
       </table>
-    </div>
-
-      <div>
+    
+    
+      <div class="col-md-8 col-md-offset-2">
+      <div class="pull-left">
         <%= link_to "買い物を続ける", public_items_path, class: "btn btn-primary" %>
       </div>
-      <div>
-        <%= link_to "注文入力画面", new_public_order_path, class: "btn btn-primary" %>
+      
+      <div class="pull-right">
+        <ktable>
+      <tr>
+        <th>合計金額</th>　
+        <th><%= (current_end_user.cart_total_price * 1.1).floor%>円</th>
+      </tr>
+       </ktable>
       </div>
-      <div>
-        <%= (current_end_user.cart_total_price * 1.1).floor%>円
       </div>
-      <div>
-
+  
+      <div class="col-md-2 col-md-offset-5">
+       <%= link_to "注文入力画面", "/public/orders/new", class: "btn btn-primary" %>
       </div>
-
   </div>
 </div>

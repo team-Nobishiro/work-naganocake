@@ -20,14 +20,14 @@
       <tr>
         <td><%= end_user.id %></td>
         
-        <td><%= end_user.last_name %></td>
+        <td><%= link_to end_user.last_name, admin_end_user_path(end_user) %></td>
         
       </td>
       <td><%= end_user.email %></td>
       <td><% if end_user.is_withdrawal == true %>
-          有効会員
+            退会済み
           <% else %>
-          退会済み
+            有効会員
           <% end %>
       </td>
       </tr>
