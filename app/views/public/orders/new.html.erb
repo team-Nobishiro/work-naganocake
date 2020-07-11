@@ -3,13 +3,11 @@
     <%= flash[:order_new] %>
   <h3>注文情報入力</h3>
     <h4><strong>　支払い方法</strong></h4>
-      <%=form_tag(order_confirm_path, method: :post) do %>
+      <%=form_tag(order_confirm_path, method: :get) do %>
         <%= radio_button_tag :payment_way, :クレジットカード %>
         <%= label_tag :payment_way, "クレジットカード" %><br>
         <%= radio_button_tag :payment_way, :銀行振込 %>
         <%= label_tag :payment_way, "銀行振込" %><br><br>
-
-        <%= hidden_field_tag(:user_id, current_end_user.id) %>
 
     <h4><strong>　お届け先</strong></h4>
       <div class="address-form">        

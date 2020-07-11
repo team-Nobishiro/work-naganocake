@@ -20,9 +20,8 @@ class Public::OrdersController < ApplicationController
     session[:order] = Order.new
     session[:order][:payment_way] = params[:payment_way]
     @send_price = 800
-    @end_user = EndUser.find(params[:user_id])
-    @end_user_id = @end_user.id
-    @toral_price = @end_user.cart_total_price + @send_price
+    @toral_price = current_end_user.cart_total_price + @send_price
+    @end_user_id = current_end_user.id
 
     if params[:select] == "select_address"
       shipping_address = ShippingAddress.find(params[:address])
@@ -32,9 +31,9 @@ class Public::OrdersController < ApplicationController
  
     elsif params[:select] == "my_address"
       # session[:address] ="〒" +current_end_user.postal_code+current_end_user.address+current_end_user.last_name+current_end_user.first_name
-      session[:order][:address] = @end_user.address
-      session[:order][:address_name] = (@end_user.last_name + @end_user.first_name)
-      session[:order][:postal_code] = @end_user.postal_code
+      session[:order][:address] = current_end_user.address
+      session[:order][:address_name] = (current_end_user.last_name + current_end_user.first_name)
+      session[:order][:postal_code] = current_end_user.postal_code
     
     else params[:select] == "new_address"
       session[:order][:address] = params[:shipping_address][:address]
@@ -59,11 +58,11 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(session[:order])
     @order.select = 0
-    @order.end_user_id = @end_user.id
-    @order.toral_price = @end_user.cart_total_price
+    @order.end_user_id = current_end_user.id
+    @order.toral_price = current_end_user.cart_total_price
     @order.send_price = 800
     @order.save
-    @cart_items = @end_user.cart_items.all
+    @cart_items = current_end_user.cart_items.all
     @cart_items.each do |cart_item|
       @order_items = @order.order_items.new
       @order_items.item_id = cart_item.item.id
@@ -72,7 +71,7 @@ class Public::OrdersController < ApplicationController
       @order_items.number = cart_item.number
       @order_items.save
     end
-    @cart_items = @end_user.cart_items
+    @cart_items = current_end_user.cart_items
     @cart_items.destroy_all
     redirect_to public_orders_thank_path
   end 
@@ -83,6 +82,8 @@ class Public::OrdersController < ApplicationController
   
   def thank
   end
+
+
 
   private
   def order_params

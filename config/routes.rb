@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   get "public/homes/about" => "public/homes#about"
   get "public/shipping_address" => "public/shipping_addresses#index"  
-  post "public/orders/confirm" => "public/orders#confirm", as:'order_confirm'
+  get "public/orders/confirm" => "public/orders#confirm", as:'order_confirm'
   get "public/orders/thank" => "public/orders#thank"
 
   namespace :public do
