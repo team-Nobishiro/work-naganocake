@@ -31,38 +31,36 @@
     </table>
   </div>
   <div class="row mt-1">
-    <% @order.order_items.each do |oi| %>
-      <% @count = 0 %>
-        <% if oi.tax_price != nil %>
-          <% @count += (oi.tax_price * oi.number) %>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>制作ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.order_items.each do |oi| %>
+        <% @count += (oi.tax_price * oi.number) %>
+        <tr>
+          <td><%= oi.item.name %></td>
+          <td><%= oi.tax_price %></td>
+          <td><%= oi.number %></td>
+          <td><%= (oi.tax_price * oi.number) %></td>
+          <td>
+            <%= form_with model: oi, url: admin_order_item_path, method: :patch do |f| %>
+              <%= f.select :production, OrderItem.productions.keys.to_a, include_blank: false %>
+              <%= f.submit "更新" %>
+            <% end %>
+          </td>
+          <td></td>
+        </tr>
         <% end %>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>商品名</th>
-            <th>単価（税込）</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th>制作ステータス</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= oi.item.name %></td>
-            <td><%= oi.tax_price %></td>
-            <td><%= oi.number %></td>
-            <td><%= (oi.tax_price * oi.number) %></td>
-            <td>
-              <%= form_with model: oi, url: admin_order_item_path, method: :patch do |f| %>
-                <%= f.select :production, OrderItem.productions.keys.to_a, include_blank: false %>
-                <%= f.submit "更新" %>
-              <% end %>
-            </td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+      </tbody>
+    </table>
     <p>商品合計<%= @count %> </p>
     <p>送料<%= 800 %> </p>
     <p>請求金額合計<%= @count + 800 %> </p>

@@ -8,7 +8,6 @@ class Admin::OrderItemsController < ApplicationController
     redirect_to admin_order_path(@order)
 
   end
-end
   private
   def order_item_params
     params.require(:order_item).permit(:production)
