@@ -9,6 +9,7 @@ class Admin::OrdersController < ApplicationController
   def show
     @orders = Order.all.page(params[:page]).per(10)
     @order = Order.find(params[:id])
+    @count = 0
   end
 
   def update

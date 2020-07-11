@@ -44,6 +44,10 @@
       </thead>
       <tbody>
         <% @order.order_items.each do |oi| %>
+          <% @count = 0 %>
+          <% if oi.tax_price != nil %>
+            <% @count += (oi.tax_price * oi.number) %>
+          <% end %>
           <tr>
             <td><%= oi.item.name %></td>
             <td><%= oi.tax_price %></td>
@@ -60,6 +64,9 @@
         <% end %>
       </tbody>
       </table>
+    <p>商品合計<%= @count %> </p>
+    <p>送料<%= 800 %> </p>
+    <p>請求金額合計<%= @count + 800 %> </p>
   </div>
 </div>
 <tbody>
