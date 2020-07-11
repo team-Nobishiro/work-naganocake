@@ -15,21 +15,21 @@ before_action :configure_permitted_parameters, if: :devise_controller?
     end
   end
 
-  # def after_sign_out_path_for(resource)
-  #   case resource
-  #   when EndUser
-  #     root_path
-  #   when Master
-  #     new_master_session_path
-  #   end
-  # end
   def after_sign_out_path_for(resource)
-    unless end_user_signed_in?
+    case resource
+    when EndUser
       root_path
-    else
+    when Master
       new_master_session_path
     end
   end
+  # def after_sign_out_path_for(resource)
+  #   unless end_user_signed_in?
+  #     root_path
+  #   else
+  #     new_master_session_path
+  #   end
+  # end
 
  protect_from_forgery with: :exception
 
