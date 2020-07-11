@@ -5,7 +5,11 @@
       <tbody>
         <tr>
           <td>購入者</td>
-           <td><%= (@order.end_user.last_name) +  (@order.end_user.first_name)%></td>
+
+           
+
+          <td><%= link_to (@order.end_user.last_name + @order.end_user.first_name), admin_end_users_path(@end_user) %></td>
+
         </tr>
         <tr>
           <td>配送先</td>
@@ -21,7 +25,10 @@
         <tr>
           <td>注文ステータス</td>
           <td>
-            <%= form_with model: @order,url: admin_order_path, method: :patch  do |f| %>
+
+           
+            <%= form_with model: @order, url: admin_order_path, method: :patch , local: true do |f| %>
+
               <%= f.select :select, Order.selects.keys.to_a, include_blank: false %>
               <%= f.submit "更新" %>
             <% end %>
@@ -33,17 +40,33 @@
   </div>
   <div class="row mt-1">
     <% @order.order_items.each do |o| %>
-
-      <table class="table table-hover">
-        <thead>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>制作ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.order_items.each do |oi| %>
           <tr>
-            <th>商品名</th>
-            <th>単価（税込）</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th>制作ステータス</th>
-            <th></th>
+            <td><%= oi.item.name %></td>
+            <td><%= oi.tax_price %></td>
+            <td><%= oi.number %></td>
+            <td><%= (oi.tax_price * oi.number) %></td>
+            <td>
+              <%= form_with model: oi, url: admin_order_item_path, method: :patch do |f| %>
+                <%= f.select :production, OrderItem.productions.keys.to_a, include_blank: false %>
+                <%= f.submit "更新" %>
+              <% end %>
+            </td>
+            <td></td>
           </tr>
+
         </thead>
         <tbody>
             <tr>
@@ -65,3 +88,4 @@
     <% end %>
   </div>
 </div>
+<tbody>
