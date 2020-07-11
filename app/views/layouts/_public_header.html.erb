@@ -6,25 +6,25 @@
 		<nav>
 			<ul class="nav navbar-nav navbar-right">
 				<% if end_user_signed_in? %>
-					<li>ようこそ、<%= current_end_user.first_name %><%= current_end_user.last_name %>さん!</li>
+					<li>ようこそ、<%= current_end_user.last_name %><%= current_end_user.first_name %>さん!</li>
 					<li>
-						<button type="button" class="btn btn-danger">
-							<%= link_to ' マイページ', public_end_users_path, :style => "color:white;" %>
+						<button type="button" class="btn btn-outline-danger">
+							<%= link_to ' マイページ', public_end_users_path, :style => "color:gold;" %>
 						</button>
 					</li>
 					<li>
-						<button type="button" class="btn btn-danger">
-							<%= link_to ' 商品一覧', public_items_path, :style => "color:white;" %>
+						<button type="button" class="btn btn-outline-danger">
+							<%= link_to ' 商品一覧', public_items_path, :style => "color:gold;" %>
 						</button>
 					</li>
 					<li>
-						<button type="button" class="btn btn-danger">
-							<%= link_to ' カート', public_cart_items_path, :style => "color:white;" %>
+						<button type="button" class="btn btn-outline-danger">
+							<%= link_to ' カート', public_cart_items_path, :style => "color:gold;" %>
 						</button>
 					</li>
 					<li>
-						<button type="button" class="btn btn-danger">
-							<%= link_to ' ログアウト', destroy_end_user_session_path, method: :delete, :style => "color:white;" %>
+						<button type="button" class="btn btn-outline-danger">
+							<%= link_to ' ログアウト', destroy_end_user_session_path, method: :delete, :style => "color:gold;" %>
 						</button>
 					</li>
 				<% elsif master_signed_in? %>
