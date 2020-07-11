@@ -10,14 +10,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def new
-  	@order = Order.new
-  	@shipping_address_new = ShippingAddress.new
-  	@shipping_addresses = current_end_user.shipping_addresses
+    @order = Order.new
+    @shipping_address_new = ShippingAddress.new
+    @shipping_addresses = current_end_user.shipping_addresses
   end
 
   def confirm
     session[:order] = Order.new
-  	session[:order][:payment_way] = params[:payment_way]
+    session[:order][:payment_way] = params[:payment_way]
     @send_price = 800
     @toral_price = current_end_user.cart_total_price + @send_price
     @end_user_id = current_end_user.id
@@ -68,15 +68,16 @@ class Public::OrdersController < ApplicationController
       @order_items.item.name = cart_item.item.name
       @order_items.tax_price = cart_item.item.not_taxprice * 1.1
       @order_items.number = cart_item.number
+      @order_items.production = 0
       @order_items.save
     end
     @cart_items = current_end_user.cart_items
- 	  @cart_items.destroy_all
+    @cart_items.destroy_all
     redirect_to public_orders_thank_path
   end 
 
   # def confirm
-  	# @orders = current_end_user.orders
+    # @orders = current_end_user.orders
   # end
   
   def thank
@@ -89,7 +90,7 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:toral_price, :select, :payment_way, :postal_code, :address, :address_name)
   end
   def shipping_address_params
-  	params.require(:shipping_address).permit(:postal_code, :address, :address_name)
+    params.require(:shipping_address).permit(:postal_code, :address, :address_name)
   end
 
 end
