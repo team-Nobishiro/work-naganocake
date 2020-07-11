@@ -5,7 +5,11 @@
       <tbody>
         <tr>
           <td>購入者</td>
+
+           
+
           <td><%= link_to (@order.end_user.last_name + @order.end_user.first_name), admin_end_users_path(@end_user) %></td>
+
         </tr>
         <tr>
           <td>配送先</td>
@@ -21,16 +25,21 @@
         <tr>
           <td>注文ステータス</td>
           <td>
+
+           
             <%= form_with model: @order, url: admin_order_path, method: :patch , local: true do |f| %>
+
               <%= f.select :select, Order.selects.keys.to_a, include_blank: false %>
               <%= f.submit "更新" %>
             <% end %>
           </td>
+          
         </tr>
       </tbody>
     </table>
   </div>
   <div class="row mt-1">
+    <% @order.order_items.each do |o| %>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -61,12 +70,28 @@
             </td>
             <td></td>
           </tr>
-        <% end %>
-      </tbody>
+
+        </thead>
+        <tbody>
+            <tr>
+              <td><%= o.item.name %></td>
+              <td><%= (o.item.not_taxprice * 1.1).floor %>円</td>
+              <td><%= o.number %></td>
+              <td><%= (o.item.not_taxprice * 1.1).floor + (o.number) %>円</td>
+              <td>
+                <%= form_with model: o,url: admin_order_item_path,method: :patch  do |f| %>
+                  <%= f.select :production, OrderItem.productions.keys.to_a, include_blank: false %>
+                  <%= f.submit "更新" %>
+                <% end %>
+              </td>
+              <td></td>
+            </tr>
+        </tbody>
       </table>
     <p>商品合計<%= @count %> </p>
     <p>送料<%= 800 %> </p>
     <p>請求金額合計<%= @count + 800 %> </p>
+
   </div>
 </div>
 <tbody>
