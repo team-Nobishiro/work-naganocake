@@ -15,8 +15,10 @@ class Public::CartItemsController < ApplicationController
   else
     @genres = Genre.all
     @items = Item.all
+    # @item = Item.find(params[:id])
+    # @cart_item = CartItem.new
     flash.now[:alert] = '会員登録をしてください'
-    render 'public/items/index'
+    render 'public/items/:id'
     # redirect_to public_items_path
   end
  end
