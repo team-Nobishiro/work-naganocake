@@ -29,10 +29,12 @@
           </tr>
         </tbody>
       </table>
-      <%= form_for (@cart_item), url: public_cart_items_path do |f| %>
-        <%= f.hidden_field :item_id, :value => @item.id %>
-        <%= f.select :number, ["個数選択",1,2,3,4,5,6,7,8,9,10] %>
-        <%= f.submit "カートに入れる" %>
+      <% if end_user_signed_in? %>
+        <%= form_for (@cart_item), url: public_cart_items_path do |f| %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.select :number, ["個数選択",1,2,3,4,5,6,7,8,9,10] %>
+          <%= f.submit "カートに入れる" %>
+        <% end %>
       <% end %>
     </div>
   </div>
