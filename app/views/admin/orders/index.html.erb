@@ -12,10 +12,16 @@
       </thead>
       <tbody>
         <% @orders.each do |o| %>
+          <% @count = 0 %>
+          <% o.order_items.each do |oi| %>
+            <% if oi.number != nil %>
+              <% @count += oi.number %>
+            <% end %>
+          <% end %>
           <tr>
             <td><%= o.created_at.strftime('%Y/%m/%d %H:%M') %></td>
             <td><%= o.end_user.last_name + o.end_user.first_name %></td>
-            <td><%= @order_items %></td>
+            <td><%= @count %></td>
             <td><%= o.select %></td>
           </tr>
         <% end %>
