@@ -1,0 +1,9 @@
+<h4>本当に退会しますか？</h4>
+<p>退会すると、会員登録情報や<br>
+これまでの購入履歴が閲覧できなくなります。<br>
+退会する場合は、「退会する」をクリックしてください。</p>
+
+<% if end_user_signed_in? && current_end_user %>
+  <%= link_to "退会", users_hide_path(current_end_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+  <%= link_to "退会しない", public_end_users_path %>
+<% end %>

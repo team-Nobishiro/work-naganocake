@@ -1,0 +1,65 @@
+<section class="cake-top">
+  <h2 class="title">マイページ</h2>
+  <div class="guide_conts">
+    <nav>
+			<ul class="nav navbar-nav">
+					<li>登録情報</li>
+					<li>
+						<button type="button" class="btn btn-danger">
+							<%= link_to ' 編集する', edit_public_end_users_path, :style => "color:white;" %>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-danger">
+							<%= link_to ' パスワードを変更する', edit_end_user_registration_path, :style => "color:white;" %>
+						</button>
+					</li>
+			</ul>
+		</nav>
+    <table class="transaction">
+      <tbody>
+          <tr>
+            <th>氏名</th>
+            <th><%= current_end_user.last_name + current_end_user.first_name %></th>
+          </tr>
+          <tr>
+            <th>カナ</th>
+            <th><%= current_end_user.last_name_kana %><%= current_end_user.first_name_kana %></th>
+          </tr>
+          <tr>
+            <th>郵便番号</th>
+            <th><%= current_end_user.postal_code %></th>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <th><%= current_end_user.address %></th>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <th><%= current_end_user.phone_number %></th>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <th><%= current_end_user.email %></th>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-1">
+      <h3>配送先</h3>
+    </div>
+    <div class="btn btn-success" >
+      <%= link_to "一覧を見る", public_shipping_addresses_path %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2">
+      <h3>注文履歴</h3>
+    </div>
+    <div class="btn btn-success" >
+      <%= link_to "一覧を見る", public_orders_path %>
+    </div>
+  </div>
+</section>

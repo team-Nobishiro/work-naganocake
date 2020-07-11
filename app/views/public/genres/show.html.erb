@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <table>
+      	<tr><th>ジャンル検索</th></tr>
+        <% @genres.each do |g| %>
+      	  <tr><td><%= link_to g.name, public_genre_path(g.id) %></td></tr>
+        <% end %>
+      </table>
+    </div>
+
+    <div class="col-xs-9">
+    	<h2 class="title"><%= @genre.name %>一覧</h2>
+      <% @genre.items.each do |item| %>
+        <ul class="clearfix">
+          <li class="box">
+            <%= link_to public_item_path(item.id) do %>
+              <%= attachment_image_tag item, :image, format: 'jpeg', class: "", fallback: "noimage.jpg", size: "40x40" %>
+            <% end %>
+            <%= link_to item.name, public_item_path(item.id) %>
+            <%= item.not_taxprice %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>

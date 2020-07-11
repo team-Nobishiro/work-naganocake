@@ -1,0 +1,68 @@
+<div class="container">
+  <h2>注文履歴詳細</h2>
+  <div class="row mt-1">
+    <table class="table table-hover">
+      <tbody>
+        <tr>
+          <td>購入者</td>
+          <td><%= link_to (@order.end_user.last_name + @order.end_user.first_name), admin_end_users_path(@end_user) %></td>
+        </tr>
+        <tr>
+          <td>配送先</td>
+          <td>
+            <%= @order.address %><br>
+            <%= @order.address_name %>
+          </td>
+        </tr>
+        <tr>
+          <td>支払い方法</td>
+          <td><%= @order.payment_way %></td>
+        </tr>
+        <tr>
+          <td>注文ステータス</td>
+          <td>
+            <%= form_with model: @order, url: admin_order_path, method: :patch , local: true do |f| %>
+              <%= f.select :select, Order.selects.keys.to_a, include_blank: false %>
+              <%= f.submit "更新" %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row mt-1">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>制作ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.order_items.each do |oi| %>
+        <% @count += (oi.tax_price * oi.number) %>
+        <tr>
+          <td><%= oi.item.name %></td>
+          <td><%= oi.tax_price %></td>
+          <td><%= oi.number %></td>
+          <td><%= (oi.tax_price * oi.number) %></td>
+          <td>
+            <%= form_with model: oi, url: admin_order_item_path, method: :patch do |f| %>
+              <%= f.select :production, OrderItem.productions.keys.to_a, include_blank: false %>
+              <%= f.submit "更新" %>
+            <% end %>
+          </td>
+          <td></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <p>商品合計<%= @count %> </p>
+    <p>送料<%= 800 %> </p>
+    <p>請求金額合計<%= @count + 800 %> </p>
+  </div>
+</div>
