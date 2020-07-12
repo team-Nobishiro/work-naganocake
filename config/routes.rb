@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   end
 
   get "public/homes/about" => "public/homes#about"
-  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "public/orders/confirm" => "public/orders#confirm", as:'order_confirm'
 

@@ -3,12 +3,6 @@ class ApplicationController < ActionController::Base
 before_action :configure_permitted_parameters, if: :devise_controller?
  
   def after_sign_in_path_for(resource)
-    # case resource
-    # when EndUser
-    #   root_path
-    # when Master
-    #   admin_home_top_path
-    # end
     if end_user_signed_in?
       root_path
     else
@@ -24,13 +18,6 @@ before_action :configure_permitted_parameters, if: :devise_controller?
       new_master_session_path
     end
   end
-  # def after_sign_out_path_for(resource)
-  #   unless end_user_signed_in?
-  #     root_path
-  #   else
-  #     new_master_session_path
-  #   end
-  # end
 
  protect_from_forgery with: :exception
 

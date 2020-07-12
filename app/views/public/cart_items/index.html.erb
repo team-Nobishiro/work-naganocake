@@ -1,8 +1,7 @@
 <div class="container-field">
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-10 col-md-offset-2">
       <h2>ショッピングカート</h2>
-
       <%= link_to "カートを空にする", public_cart_items_path, method: :delete, class: "btn btn-danger" %>
       <table>
         <thead>
@@ -49,12 +48,12 @@
            </tr>
         </body>
       </table>
-
-      <br><br><div class="text-center">
+    <div class="row">
+      <br><br><div class="col-md-8 col-md-offset-3">
         <%= link_to "買い物を続ける", public_items_path, :style => "color:gold;", class: "btn btn-success" %>
         <%= link_to "注文入力画面", "/public/orders/new", :style => "color:gold;", class: "btn btn-success" %>
         合計金額　<%= (current_end_user.cart_total_price * 1.1).floor%>円
       </div>
-
+    </div>
   </div>
 </div>

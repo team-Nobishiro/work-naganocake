@@ -1,14 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-3">
-      <table>
-        <tr><th>ジャンル検索</th></tr>
-        <% @genres.each do |g| %>
-        <% if g.is_valid == true %>
-          <tr><td><%= link_to g.name, public_genre_path(g.id) %></td></tr>
-        <% end %>
-        <% end %>
-      </table>
+      <%= render partial: '/shared/genre_search', locals: { genres: @genres } %>
     </div>
 
 
@@ -19,22 +12,8 @@
         会員でない方も商品の閲覧はできますが、<br>
         購入には会員登録が必要になります。<br>
       </div>
-
       <h4 class="headline">オススメ商品</h4>
-        <% @items.each do |item| %>
-        <div class="img_wrap">
-        <div class="item-box">
-          <div class="box-inline">
-            <%= link_to public_item_path(item.id) do %>
-              <%= attachment_image_tag item, :image, format: 'jpeg', class: "", fallback: "noimage.jpg", size: "200x160" %>
-            <% end %><br>
-            <%= item.name %>
-            税抜<%= item.not_taxprice %>円
-          </div>
-        </div>
-      </div>
-        <% end %>
-
+        <%= render partial: 'shared/item_index', locals: { items: @items } %>
     </div>
   </div>
 </div>
