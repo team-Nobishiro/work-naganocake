@@ -5,11 +5,7 @@
       <tbody>
         <tr>
           <td>購入者</td>
-
-           
-
           <td><%= link_to (@order.end_user.last_name + @order.end_user.first_name), admin_end_users_path(@end_user) %></td>
-
         </tr>
         <tr>
           <td>配送先</td>
@@ -25,21 +21,16 @@
         <tr>
           <td>注文ステータス</td>
           <td>
-
-           
             <%= form_with model: @order, url: admin_order_path, method: :patch , local: true do |f| %>
-
               <%= f.select :select, Order.selects.keys.to_a, include_blank: false %>
               <%= f.submit "更新" %>
             <% end %>
           </td>
-          
         </tr>
       </tbody>
     </table>
   </div>
   <div class="row mt-1">
-    <% @order.order_items.each do |o| %>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -53,45 +44,25 @@
       </thead>
       <tbody>
         <% @order.order_items.each do |oi| %>
-          <% @count = 0 %>
-          <% if oi.tax_price != nil %>
-            <% @count += (oi.tax_price * oi.number) %>
-          <% end %>
-          <tr>
-            <td><%= oi.item.name %></td>
-            <td><%= oi.tax_price %></td>
-            <td><%= oi.number %></td>
-            <td><%= (oi.tax_price * oi.number) %></td>
-            <td>
-              <%= form_with model: oi, url: admin_order_item_path, method: :patch do |f| %>
-                <%= f.select :production, OrderItem.productions.keys.to_a, include_blank: false %>
-                <%= f.submit "更新" %>
-              <% end %>
-            </td>
-            <td></td>
-          </tr>
-
-        </thead>
-        <tbody>
-            <tr>
-              <td><%= o.item.name %></td>
-              <td><%= (o.item.not_taxprice * 1.1).floor %>円</td>
-              <td><%= o.number %></td>
-              <td><%= (o.item.not_taxprice * 1.1).floor + (o.number) %>円</td>
-              <td>
-                <%= form_with model: o,url: admin_order_item_path,method: :patch  do |f| %>
-                  <%= f.select :production, OrderItem.productions.keys.to_a, include_blank: false %>
-                  <%= f.submit "更新" %>
-                <% end %>
-              </td>
-              <td></td>
-            </tr>
-        </tbody>
-      </table>
+        <% @count += (oi.tax_price * oi.number) %>
+        <tr>
+          <td><%= oi.item.name %></td>
+          <td><%= oi.tax_price %></td>
+          <td><%= oi.number %></td>
+          <td><%= (oi.tax_price * oi.number) %></td>
+          <td>
+            <%= form_with model: oi, url: admin_order_item_path, method: :patch do |f| %>
+              <%= f.select :production, OrderItem.productions.keys.to_a, include_blank: false %>
+              <%= f.submit "更新" %>
+            <% end %>
+          </td>
+          <td></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
     <p>商品合計<%= @count %> </p>
     <p>送料<%= 800 %> </p>
     <p>請求金額合計<%= @count + 800 %> </p>
-
   </div>
 </div>
-<tbody>

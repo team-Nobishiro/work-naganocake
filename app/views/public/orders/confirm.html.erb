@@ -12,48 +12,34 @@
             <th>小計</th>
           </tr>
         </thead>
-
         <tbody>
-
           <% current_end_user.cart_items.each do |cart| %>
             <tr>
               <td>
                 <%= attachment_image_tag cart.item, :image, :size => '50x50' %>
-
-                <span> </span>
                 <%= cart.item.name %>
               </td>
-
-
               <td class="align-middle"><%= (cart.item.not_taxprice * 1.1).floor %></td>
-
               <td><%= cart.number %></td>
-
-              <td><%= current_end_user.cart_total_price %></td>
+              <td><%= ((cart.item.not_taxprice * 1.1) * cart.number).floor %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-
-
-
     <div class="col-2 d-flex">
-
       <table class="table table-noborder">
         <tbody>
           <tr>
             <td>送料</td>
             <td>800円</td>
           </tr>
-
           <tr>
             <td>商品合計</td>
             <td><%= (current_end_user.cart_total_price * 1.1).floor%>円</td>
           </tr>
-
           <tr>
             <td>請求金額</td>
-            <td><%= current_end_user.cart_total_price + 800 %>円</td>
+            <td><%= ((current_end_user.cart_total_price * 1.1) + 800).floor %>円</td>
           </tr>
         </tbody>
       </table>
