@@ -31,9 +31,10 @@ class Public::OrdersController < ApplicationController
       session[:order][:address_name] = (current_end_user.last_name + current_end_user.first_name)
       session[:order][:postal_code] = current_end_user.postal_code
     else params[:select] == "new_address"
-      session[:order][:address] = params[:shipping_address][:address]
-      session[:order][:address_name] = params[:shipping_address][:address_name]
-      session[:order][:postal_code] = params[:shipping_address][:postal_code]
+      session[:order][:address] = params[:address]
+      session[:order][:address_name] = params[:address_name]
+      session[:order][:postal_code] = params[:postal_code]
+
     end
     @postal_code = session[:order][:postal_code]
     @address = session[:order][:address]
@@ -48,7 +49,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    ShippingAddress.create(postal_code(params[:postal_code]),)
+    ShippingAddress.create(end_user_id: current_end_user.id, postal_code: params[:postal_code], address: params[:address], address_name: params[:address_name])
     @order = Order.new(session[:order])
     @order.select = 0
     @order.end_user_id = current_end_user.id
