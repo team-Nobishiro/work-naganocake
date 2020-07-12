@@ -12,7 +12,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
     if end_user_signed_in?
       root_path
     else
-      admin_home_top_path
+      admin_homes_top_path
     end
   end
 
