@@ -3,9 +3,7 @@
     <div class="col-md-10 col-md-offset-1">
       <h2>ショッピングカート</h2>
 
-    <div>
       <%= link_to "カートを空にする", public_cart_items_path, method: :delete, class: "btn btn-danger" %>
-    </div>
       <table>
         <thead>
           <tr>
@@ -47,30 +45,16 @@
               
                <% end %>
              </td>
-
                
            </tr>
         </body>
       </table>
-    
-    
-      <div class="col-md-8 col-md-offset-2">
-      <div class="pull-left">
-        <%= link_to "買い物を続ける", public_items_path, class: "btn btn-primary" %>
+
+      <br><br><div class="text-center">
+        <%= link_to "買い物を続ける", public_items_path, :style => "color:gold;", class: "btn btn-success" %>
+        <%= link_to "注文入力画面", "/public/orders/new", :style => "color:gold;", class: "btn btn-success" %>
+        合計金額　<%= (current_end_user.cart_total_price * 1.1).floor%>円
       </div>
-      
-      <div class="pull-right">
-        <ktable>
-      <tr>
-        <th>合計金額</th>　
-        <th><%= (current_end_user.cart_total_price * 1.1).floor%>円</th>
-      </tr>
-       </ktable>
-      </div>
-      </div>
-  
-      <div class="col-md-2 col-md-offset-5">
-       <%= link_to "注文入力画面", "/public/orders/new", class: "btn btn-primary" %>
-      </div>
+
   </div>
 </div>

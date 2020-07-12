@@ -1,7 +1,10 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
     <%= flash[:order_new] %>
-  <h3>注文情報入力</h3>
+
+  <h3>注文情報入力</h3><br>
     <h4><strong>　支払い方法</strong></h4>
       <%=form_tag(order_confirm_path, method: :get) do %>
         <%= radio_button_tag :payment_way, :クレジットカード %>
@@ -27,12 +30,12 @@
         郵便番号(ハイフンなし)<%= f.text_field :postal_code, class: "form-control", :style=>"width:150px;" %>
         住所<%= f.text_field :address, class: "form-control", :style=>"width:600px;" %>
         宛名<%= f.text_field :address_name, class: "form-control", :style=>"width:150px;" %>
-        <%= f.submit "登録する", class: "btn btn-success" %>
-      <% end %><br><br><br>
+      <% end %><br><br>
 
       <%= submit_tag "確認画面へ進む", class: "btn btn-primary" %>
      <% end %>
      </div>
 
+    </div>
   </div>
 </div>
