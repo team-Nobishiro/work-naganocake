@@ -53,7 +53,7 @@
            <%= "〒"+@postal_code+@address+@address_name %>様 
       </div><br>
 
-      <%=link_to "購入を確定する", public_orders_path, method: :post, class: "btn btn-success", :style => "color:gold;"%>
+      <%=link_to "購入を確定する", public_orders_path(postal_code: @postal_code, address: @address, address_name: @address_name), method: :post, class: "btn btn-success", :style => "color:gold;"%>
 
     </div>
   </div>

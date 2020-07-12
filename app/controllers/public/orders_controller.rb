@@ -21,7 +21,6 @@ class Public::OrdersController < ApplicationController
     @send_price = 800
     @toral_price = current_end_user.cart_total_price + @send_price
     @end_user_id = current_end_user.id
-
     if params[:select] == "select_address"
       shipping_address = ShippingAddress.find(params[:address])
       session[:order][:address] = shipping_address.address
@@ -35,9 +34,9 @@ class Public::OrdersController < ApplicationController
       session[:order][:postal_code] = current_end_user.postal_code
     
     else params[:select] == "new_address"
-      session[:order][:address] = params[:shipping_address][:address]
-      session[:order][:address_name] = params[:shipping_address][:address_name]
-      session[:order][:postal_code] = params[:shipping_address][:postal_code]
+      session[:order][:address] = params[:address]
+      session[:order][:address_name] = params[:address_name]
+      session[:order][:postal_code] = params[:postal_code]
      
     end
 
@@ -55,6 +54,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    ShippingAddress.create(end_user_id: current_end_user.id, postal_code: params[:postal_code], address: params[:address], address_name: params[:address_name])
     @order = Order.new(session[:order])
     @order.select = 0
     @order.end_user_id = current_end_user.id
