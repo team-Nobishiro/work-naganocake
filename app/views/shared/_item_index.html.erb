@@ -1,4 +1,5 @@
 <% items.each do |item| %>
+  <% if item.is_sale_status == false && item.genre.is_valid == true %>
   <div class="item-box">
     <div class="box-inline">
         <%= link_to public_item_path(item.id) do %>
@@ -8,4 +9,5 @@
         <%= item.not_taxprice %>円(税抜)
     </div>
   </div>
+  <% end %>
 <% end %>

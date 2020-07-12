@@ -2,7 +2,7 @@ class Public::HomesController < ApplicationController
 
   def top
     @items = Item.all
-    @genres = Genre.all
+    @genres = Genre.all.where(is_valid: true)
   end
 
   def about
