@@ -1,0 +1,6 @@
+<table>
+  <tr><th>ジャンル検索</th></tr>
+  <% genres.each do |g| %>
+    <tr><td><%= link_to g.name, public_genre_path(g.id) %></td></tr>
+  <% end %>
+</table>
