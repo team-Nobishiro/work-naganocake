@@ -4,7 +4,9 @@
       <table>
         <tr><th>ジャンル検索</th></tr>
         <% @genres.each do |g| %>
+        <% if g.is_valid == true %>
           <tr><td><%= link_to g.name, public_genre_path(g.id) %></td></tr>
+        <% end %>
         <% end %>
       </table>
     </div>
@@ -20,6 +22,7 @@
 
       <h4 class="headline">オススメ商品</h4>
         <% @items.each do |item| %>
+        <div class="img_wrap">
         <div class="item-box">
           <div class="box-inline">
             <%= link_to public_item_path(item.id) do %>
@@ -29,6 +32,7 @@
             税抜<%= item.not_taxprice %>円
           </div>
         </div>
+      </div>
         <% end %>
 
     </div>

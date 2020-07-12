@@ -35,16 +35,15 @@ class Public::OrdersController < ApplicationController
       session[:order][:postal_code] = current_end_user.postal_code
     
     else params[:select] == "new_address"
-      session[:order][:address] = params[:shipping_address][:address]
-      session[:order][:address_name] = params[:shipping_address][:address_name]
-      session[:order][:postal_code] = params[:shipping_address][:postal_code]
+      session[:order][:address] = params[:address]
+      session[:order][:address_name] = params[:address_name]
+      session[:order][:postal_code] = params[:postal_code]
      
-    end
+    end 
 
     @postal_code = session[:order][:postal_code]
     @address = session[:order][:address]
     @address_name = session[:order][:address_name]
-    
     if session[:order][:address].present? && session[:order][:payment_way].present?
       # redirect_to order_confirm_path
     else
@@ -55,6 +54,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    ShippingAddress.create(postal_code(params[:postal_code]),)
     @order = Order.new(session[:order])
     @order.select = 0
     @order.end_user_id = current_end_user.id

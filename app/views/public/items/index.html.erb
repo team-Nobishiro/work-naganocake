@@ -1,5 +1,7 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
     <div class="col-xs-3">
       <table>
       	<tr><th>ジャンル検索</th></tr>
@@ -11,6 +13,8 @@
     <div class="col-xs-9">
     	<h2 class="title">商品一覧</h2>
       <% @items.each do |item| %>
+      <div class="shadow-lg p-3 mb-5 bg-light rounded">
+        <div class="img_wrap">
         <div class="item-box">
           <div class="box-inline">
               <%= link_to public_item_path(item.id) do %>
@@ -20,8 +24,12 @@
               <%= item.not_taxprice %>円(税抜)
           </div>
         </div>
+      </div>
+    </div>
       <% end %>
 
     </div>
   </div>
 </div>
+</div>
+

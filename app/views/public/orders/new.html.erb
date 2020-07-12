@@ -26,12 +26,13 @@
 
         <%= radio_button_tag :select, :new_address %>
         <label class="order-address">新しいお届け先</label>
-          <%= form_for(@shipping_address_new, url: public_shipping_addresses_path, method: :post) do |f| %>
-        郵便番号(ハイフンなし)<%= f.text_field :postal_code, class: "form-control", :style=>"width:150px;" %>
-        住所<%= f.text_field :address, class: "form-control", :style=>"width:600px;" %>
-        宛名<%= f.text_field :address_name, class: "form-control", :style=>"width:150px;" %>
-      <% end %><br><br>
-
+         
+        郵便番号(ハイフンなし)<%= text_field_tag :postal_code %>
+        住所<%= text_field_tag :address %>
+        宛名<%= text_field_tag :address_name %>
+      
+      
+     
       <%= submit_tag "確認画面へ進む", class: "btn btn-primary" %>
      <% end %>
      </div>
