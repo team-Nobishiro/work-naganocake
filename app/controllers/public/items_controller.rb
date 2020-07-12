@@ -9,6 +9,7 @@ class Public::ItemsController < ApplicationController
     # if end_user_signed_in?
       @item = Item.find(params[:id])
       @cart_item = CartItem.new
+       @genres = Genre.all
     # else
     #   @genres = Genre.all
     #   @items = Item.all
