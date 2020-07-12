@@ -1,6 +1,0 @@
-<div class="container">
-  <div class="row">
-    <h1>本日の注文件数<%= link_to admin_orders_path do %>
-  	<%= Order.where(created_at: Time.zone.now.all_day).count %><% end %>件</h1>
-  </div>
-</div>
