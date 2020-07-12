@@ -21,6 +21,15 @@
    background-color: black;
  }
 
+ .container {
+   width: 100%;
+   height: 100%;
+ }
+
+ .nav {
+   height: 40px;
+ }
+
  a:hover {
    color: white;
  }
@@ -54,6 +63,10 @@
   border: none;
  }
 
+ .btn {
+ margin-left: 25px;
+ } 
+
  .btn-circle {
    width: 30px;
    height: 30px;
@@ -86,9 +99,20 @@ li {
   list-style: none;
 }
 
-.top-favorite{
+.item-box{
   display: inline-flex;
   margin: 5px;
   padding: 10px;
   background-color: #ffffff;
+}
+
+.box-inline{
+  display: inline-block;
+}
+
+.thanks-page {
+  width: 100%;
+  height: 100%;
+  background-image: url(thanks.jpeg);
+  background-size:  cover;
 }
