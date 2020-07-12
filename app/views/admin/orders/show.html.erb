@@ -51,7 +51,7 @@
           <td><%= oi.number %></td>
           <td><%= (oi.tax_price * oi.number) %></td>
           <td>
-            <%= form_with model: oi, url: admin_order_item_path, method: :patch, local: true do |f| %>
+            <%= form_with model: oi, url: admin_order_item_path(oi), method: :patch, local: true do |f| %>
               <%= f.select :production, OrderItem.productions.keys.to_a, include_blank: false %>
               <%= f.submit "更新" %>
             <% end %>
