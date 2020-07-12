@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'public/homes#top'
-  get "admin/home/top" => "admin/home#top"
+  get "admin/home/top" => "admin/homes#top"
 
   devise_for :master, controllers: {
     sessions: 'admin/masters/sessions'
@@ -45,4 +45,3 @@ Rails.application.routes.draw do
   put "public/end_users/hide" => "public/end_users#hide", as: 'users_hide'
   get '/search', to: 'search#search'
 end
-

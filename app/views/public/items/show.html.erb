@@ -11,7 +11,7 @@
     </div>
 
     <div class="col-xs-4">
-      <%= attachment_image_tag @item, :image, format: 'jpeg', class: "", size: "200x200" %>
+      <%= attachment_image_tag @item, :image, format: 'jpeg', class: "", size: "220x200" %>
     </div>
     <div class="col-xs-4">
       <table class="table table-noborder">
@@ -24,7 +24,7 @@
           </tr>
           <tr>
             <td>
-              ￥<%= (@item.not_taxprice * 1.1).floor %>(税込み)
+              ￥<%= (@item.not_taxprice * 1.1).floor %>(税込)
             </td>
           </tr>
         </tbody>

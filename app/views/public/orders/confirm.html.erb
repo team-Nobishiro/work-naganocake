@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
-    <h3>注文情報確認</h3>
+    <div class="col-md-10 col-md-offset-1">
+
+    <h3>注文情報確認</h3><br>
       <table class="table table-noborder">
         <thead>
           <tr>
@@ -10,78 +12,48 @@
             <th>小計</th>
           </tr>
         </thead>
-
         <tbody>
-
           <% current_end_user.cart_items.each do |cart| %>
             <tr>
               <td>
                 <%= attachment_image_tag cart.item, :image, :size => '50x50' %>
-
-                <span> </span>
                 <%= cart.item.name %>
               </td>
-
-
               <td class="align-middle"><%= (cart.item.not_taxprice * 1.1).floor %></td>
-
               <td><%= cart.number %></td>
-
-              <td><%= current_end_user.cart_total_price %></td>
+              <td><%= ((cart.item.not_taxprice * 1.1) * cart.number).floor %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-
-
-
     <div class="col-2 d-flex">
-
       <table class="table table-noborder">
         <tbody>
           <tr>
             <td>送料</td>
-            <td>800</td>
-
+            <td>800円</td>
           </tr>
-
           <tr>
             <td>商品合計</td>
             <td><%= (current_end_user.cart_total_price * 1.1).floor%>円</td>
           </tr>
-
           <tr>
             <td>請求金額</td>
-
-            <td><%= @toral_price * 1.1 %></td>
+            <td><%= ((current_end_user.cart_total_price * 1.1) + 800).floor %>円</td>
           </tr>
-
         </tbody>
       </table>
 
-    </div>
-  </div>
 
-  <div class="row mt-5">
-    <div class="offset-2 col-6">
-      <div class="row mt-3">
-        <strong class="red-border px-3 mr-3">支払方法</strong>
-        <span class="brown-border px-3"><%= session[:order][:payment_way] %></span>
-      </div>
 
-      <div class="row mt-3">
-        <strong class="red-border px-3 mr-3">　お届け先　</strong>
-        <span class="brown-border px-3">
+        <strong class="red-border px-3 mr-3">支払方法　</strong>
+        <span class="brown-border px-3"><%= session[:order][:payment_way] %></span><br>
 
-           <%= "〒"+@postal_code+@address+@address_name %><span>様</span>
- 
-        </span>
-      </div>
-    </div>
+        <strong class="red-border px-3 mr-3">お届け先　</strong>
+           <%= "〒"+@postal_code+@address+@address_name %>様 
+      </div><br>
 
-    <div class="col-3">
-      <%=link_to "購入を確定する", public_orders_path, method: :post, class: "btn btn-success" %>
-    </div>
+      <%=link_to "購入を確定する", public_orders_path, method: :post, class: "btn btn-success", :style => "color:gold;"%>
 
     </div>
   </div>
