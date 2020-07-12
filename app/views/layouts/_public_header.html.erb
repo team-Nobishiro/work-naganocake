@@ -9,6 +9,11 @@
 					<li>ようこそ、<%= current_end_user.last_name %><%= current_end_user.first_name %>さん!</li>
 					<li>
 						<button type="button" class="btn btn-outline-danger">
+							<%= link_to ' トップページ', root_path, :style => "color:gold;" %>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="btn btn-outline-danger">
 							<%= link_to ' マイページ', public_end_users_path, :style => "color:gold;" %>
 						</button>
 					</li>
