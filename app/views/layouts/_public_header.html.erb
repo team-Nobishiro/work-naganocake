@@ -1,12 +1,20 @@
+<div class="solid">
 <nav class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
   	<nav class="nav navbar-nav navbar-left">
-  	  <div class="logo"><img src="assets/logo.jpg" width="17%" height="20%"></div>
+  	  <div class="logo"><img src="assets/logo.jpg" width="20%" height="20%"></div>
   	</nav>
 		<nav>
 			<ul class="nav navbar-nav navbar-right">
+				<li class="nav welcome">
 				<% if end_user_signed_in? %>
 					<li>ようこそ、<%= current_end_user.last_name %><%= current_end_user.first_name %>さん!</li>
+				</li>
+					<li>
+						<button type="button" class="btn btn-outline-danger">
+							<%= link_to ' トップページ', root_path, :style => "color:gold;" %>
+						</button>
+					</li>
 					<li>
 						<button type="button" class="btn btn-outline-danger">
 							<%= link_to ' マイページ', public_end_users_path, :style => "color:gold;" %>
@@ -51,3 +59,4 @@
 		</nav>
   </div>
 </nav>
+</div>

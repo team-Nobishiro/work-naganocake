@@ -1,5 +1,5 @@
 class Admin::GenresController < ApplicationController
-
+  
 	def index
 		@genres = Genre.all
 		@genre = Genre.new
@@ -24,6 +24,16 @@ class Admin::GenresController < ApplicationController
       redirect_to edit_admin_genre_path(genre)
     end
 	end
+  def valid
+    @genre = Genre.find(params[:id])
+  end
+  def hide
+    @genre = Genre.find(params[:id])
+    @genre.update(is_valid: true)
+    reset_session
+    flash[:notice] = "このジャンルを停止します"
+    redirect_to root_path
+  end
 	 private
      def genre_params
     params.require(:genre).permit(:name, :is_valid)

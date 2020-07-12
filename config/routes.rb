@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'public/homes#top'
-  get "admin/home/top" => "admin/homes#top"
+  get "admin/homes/top" => "admin/homes#top"
 
   devise_for :master, controllers: {
     sessions: 'admin/masters/sessions'
@@ -22,8 +22,9 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :update]
   end
 
+
   get "public/homes/about" => "public/homes#about" 
- 
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "public/orders/confirm" => "public/orders#confirm", as:'order_confirm'
 
@@ -31,7 +32,7 @@ Rails.application.routes.draw do
 
   namespace :public do
     resource :end_users
-    resources :shipping_addresses, except: [:new, :show]
+    resources :shipping_addresses
     resources :items, only: [:index, :show]
     resources :genres, only: [:show]
     resources :orders
