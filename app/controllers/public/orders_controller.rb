@@ -48,6 +48,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    ShippingAddress.create(postal_code(params[:postal_code]),)
     @order = Order.new(session[:order])
     @order.select = 0
     @order.end_user_id = current_end_user.id
