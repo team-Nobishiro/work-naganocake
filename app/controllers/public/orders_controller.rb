@@ -21,36 +21,29 @@ class Public::OrdersController < ApplicationController
     @send_price = 800
     @toral_price = current_end_user.cart_total_price + @send_price
     @end_user_id = current_end_user.id
-
     if params[:select] == "select_address"
       shipping_address = ShippingAddress.find(params[:address])
       session[:order][:address] = shipping_address.address
       session[:order][:address_name] = shipping_address.address_name
       session[:order][:postal_code] = shipping_address.postal_code
- 
     elsif params[:select] == "my_address"
-      # session[:address] ="〒" +current_end_user.postal_code+current_end_user.address+current_end_user.last_name+current_end_user.first_name
       session[:order][:address] = current_end_user.address
       session[:order][:address_name] = (current_end_user.last_name + current_end_user.first_name)
       session[:order][:postal_code] = current_end_user.postal_code
-    
     else params[:select] == "new_address"
       session[:order][:address] = params[:shipping_address][:address]
       session[:order][:address_name] = params[:shipping_address][:address_name]
       session[:order][:postal_code] = params[:shipping_address][:postal_code]
-     
     end
-
     @postal_code = session[:order][:postal_code]
     @address = session[:order][:address]
     @address_name = session[:order][:address_name]
-    
-    if session[:order][:address].present? && session[:order][:payment_way].present?
-      # redirect_to order_confirm_path
-    else
-
+    unless session[:order][:address].present? && session[:order][:payment_way].present?
+      @order = Order.new
+      @shipping_address_new = ShippingAddress.new
+      @shipping_addresses = current_end_user.shipping_addresses
       flash[:order_new] = "支払い方法または配送先を選択して下さい"
-      redirect_to public_new_order_path
+      render "new"
     end
   end
 
@@ -75,15 +68,9 @@ class Public::OrdersController < ApplicationController
     @cart_items.destroy_all
     redirect_to public_orders_thank_path
   end 
-
-  # def confirm
-    # @orders = current_end_user.orders
-  # end
   
   def thank
   end
-
-
 
   private
   def order_params
@@ -92,5 +79,4 @@ class Public::OrdersController < ApplicationController
   def shipping_address_params
     params.require(:shipping_address).permit(:postal_code, :address, :address_name)
   end
-
 end
