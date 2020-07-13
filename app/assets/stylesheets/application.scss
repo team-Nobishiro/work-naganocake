@@ -91,7 +91,7 @@
   width: 56px;
  }
  
-#container-header {
+.container-header {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -101,6 +101,14 @@
     border-bottom: 1px solid #C7B299;
     z-index: 4;
     position: relative;
+ }
+
+ .padding-top {
+  padding-top: 50px;
+ }
+
+ .welcome {
+  margin-right: 50px;
  }
 
  div.row-navbar navbar-fixed {
