@@ -19,11 +19,16 @@
  * {
    color: white;
    background-color: black;
+   font-family: 'Cambria','游ゴシック','Yu Gothic','ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Hiragino Kaku Gothic ProN','Hiragino Sans','ヒラギノ角ゴシック','メイリオ',Meiryo,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;
  }
 
+
  body {
-   margin-top: 100px;
-   margin-bottom: 50px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
  }
 
  .container {
@@ -31,29 +36,100 @@
    height: 100%;
    padding: 20px 0px 0px 80px;
  }
+#container-header {
+ width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 120px;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom,#000000 60%,#3C3C3C );
+    border-bottom: 1px solid #C7B299;
+    z-index: 4;
+    position: relative;
+ }
+
+ div.row-navbar navbar-fixed {
+ width: 100%;
+height: 110px;
+ }
+
+
+       .navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0px;
+    border: 1px solid transparent;
+}
+  .li {
+  margin-top: 16px;
+  height: 50px;
+
+  }
+ button.btn btn-outline-danger {padding: 0px 0px 0px 0px ;
+  margin-left: 25px;
+    margin-top: 50px;
+    margin-right: 20px;
+  
+
+ }
+ 
+li.nav welcome {
+  margin-top: 50px
+}
+
+ .headline {
+  font-size: 30px;
+  border-bottom: 1px solid #c69c6d;
+  padding-bottom: 5px;
+ }
+ 
  .btn btn-outline-danger {
   padding: 0px 50px 0px ;
  }
 
- .nav {
-   height: 0px;
+ .left {
+   padding-left: 10px;
  }
 
+ .nav {
+   height: 40px;
+ }
+ 
  /*　ヘッダー public　*/
-.container-public {
-  padding: 0px 0px 0px 0px;
-}
-.solid{
-   border: 2px groove #D1AE15;
-   padding: 0px 0px 0px 80px;
+
+div.logo {
+  height: 110px;
+  width: 250px;
+  padding: 0px 0px 0px 100px;
 }
 .logo {
-  padding: 12px 0px 0px 100px;
+  padding: 0px 0px 0px 0px;
+  background:rgba(0,0,0,0);
 }
-
+nav.navbar navbar-fixed {
+  width: 100%;
+   height: 100px;
+}
+ul.nav navbar-nav navbar {
+  width: 1000px;
+   height: 50px;
+}
 
  a:hover {
    color: white;
+ }
+
+ a {
+   color: white;
+ }
+
+ .border-dot {
+  border-style: dotted;
+  background-color: #303030;
+ }
+
+ .bordot {
+  background-color: #303030;
  }
 
  table {
@@ -91,6 +167,8 @@
    color: #c69c6d;
  }
 
+ 
+
  .way-label {
    text-shadow: 5px 5px 2px #c69c6d;
  }
@@ -99,9 +177,7 @@
   border: none;
  }
 
- .btn {
- margin-left: 25px;
- } 
+
 
  .btn-circle {
    width: 30px;
@@ -139,11 +215,12 @@ li {
   display: inline-flex;
   margin: 5px;
   padding: 10px;
-  background-color: #ffffff;
+  background-color: black;
 }
 
 .box-inline {
   display: inline-block;
+  background-color: #303030;
 }
 
 .background-gold {
@@ -161,3 +238,17 @@ li {
   transform: translateY(-10px);
   transition-duration: 0.5s;
 }
+
+.main {
+  flex: 1;
+}
+
+.tableb {
+  border: 2px solid black;
+  margin: 0 20px;
+  flex: 1;
+}
+
+// ユーザートップページ
+.intro {
+  font-size: 20px;

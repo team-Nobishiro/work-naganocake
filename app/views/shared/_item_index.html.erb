@@ -1,15 +1,17 @@
 <% items.each do |item| %>
   <% if item.is_sale_status == false && item.genre.is_valid == true %>
   <div class="item-box">
-  <div class="img_wrap">
-    <div class="box-inline">
+    <div class="img_wrap">
+      <div class="box-inline">
         <%= link_to public_item_path(item.id) do %>
           <%= attachment_image_tag item, :image, format: 'jpeg', class: "", size: "160x140" %>
-        <% end %><br>
-        <%= link_to item.name, public_item_path(item.id) %><br>
-        <%= item.not_taxprice %>円(税抜)
+        <% end %>
+        <div>
+          <%= link_to item.name, public_item_path(item.id) %><br>
+          <%= item.not_taxprice %>円(税抜)
+        </div>
+      </div>
     </div>
   </div>
-</div>
   <% end %>
 <% end %>
