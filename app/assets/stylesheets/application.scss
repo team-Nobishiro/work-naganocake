@@ -44,46 +44,58 @@
     position: relative;
  }
 
- #container-header.innar-box {
-    width: 100%;
-    max-width: 1600px;
-    height: 100%;
-    margin: auto;
-    padding-top: 16px;
-    padding-bottom: 12px;
-    box-sizing: border-box;
-    position: relative;
-    display: block;
-  }
+ div.row-navbar navbar-fixed {
+ width: 100%;
+height: 110px;
+ }
+
 
        .navbar {
     position: relative;
-    min-height: 115px;
+    min-height: 50px;
     margin-bottom: 0px;
     border: 1px solid transparent;
 }
-  
- .btn btn-outline-danger {
-  padding: 0px 50px 0px ;
+  .li {
+  margin-top: 16px;
+  height: 50px;
+
+  }
+ button.btn btn-outline-danger {padding: 0px 0px 0px 0px ;
   margin-left: 25px;
     margin-top: 50px;
     margin-right: 20px;
+  
+
  }
  
 li.nav welcome {
   margin-top: 50px
 }
  .nav {
-   height: 0px;
+   height: 40px;
    
  }
+ 
  /*　ヘッダー public　*/
 
-
-.logo {
-  padding: 12px 0px 0px 100px;
+div.logo {
+  height: 110px;
+  width: 250px;
+  padding: 0px 0px 0px 100px;
 }
-
+.logo {
+  padding: 0px 0px 0px 0px;
+  background:rgba(0,0,0,0);
+}
+nav.navbar navbar-fixed {
+  width: 100%;
+   height: 100px;
+}
+ul.nav navbar-nav navbar {
+  width: 1000px;
+   height: 50px;
+}
 
  a:hover {
    color: white;
@@ -132,9 +144,7 @@ li.nav welcome {
   border: none;
  }
 
- .btn {
- margin-left: 25px;
- } 
+
 
  .btn-circle {
    width: 30px;

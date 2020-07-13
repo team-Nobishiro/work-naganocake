@@ -1,38 +1,37 @@
 <div id="container-header">
-<div class="innar-box">
-<nav class="navbar navbar-fixed">
+
   	<nav class="nav navbar-nav navbar-left">
-  	 <div class="logo"><img alt="logo" src="/assets/logo.jpg" class="logo" width="30%" height="30%"></div>
+  	 <div class="logo"><img alt="logo" src="/assets/logo.jpg" class="logo" width="90%" height="95%"></div>
   	</nav>
 		<nav>
-			<ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar">
 				<li class="nav welcome">
 				<% if end_user_signed_in? %>
 					<li>ようこそ、<%= current_end_user.last_name %><%= current_end_user.first_name %>さん!</li>
 				</li>
 					<li>
 						<button type="button" class="btn btn-outline-danger">
-							<%= link_to ' トップページ', root_path, :style => "color:gold;" %>
+							<%= link_to ' トップページ', root_path, :style => "color:gold;",class: "home glyphicon glyphicon-home" %> 
 						</button>
 					</li>
 					<li>
 						<button type="button" class="btn btn-outline-danger">
-							<%= link_to ' マイページ', public_end_users_path, :style => "color:gold;" %>
+							<%= link_to ' マイページ', public_end_users_path, :style => "color:gold;", class: "user glyphicon glyphicon-user" %>
 						</button>
 					</li>
 					<li>
 						<button type="button" class="btn btn-outline-danger">
-							<%= link_to ' 商品一覧', public_items_path, :style => "color:gold;" %>
+							<%= link_to ' 商品一覧', public_items_path, :style => "color:gold;",class: "list glyphicon glyphicon-list" %> 
 						</button>
 					</li>
 					<li>
 						<button type="button" class="btn btn-outline-danger">
-							<%= link_to ' カート', public_cart_items_path, :style => "color:gold;" %>
+                             <%= link_to ' カート', public_cart_items_path, :style => "color:gold;",class: "plus glyphicon glyphicon-plus" %>
 						</button>
 					</li>
 					<li>
-						<button type="button" class="btn btn-outline-danger">
-							<%= link_to ' ログアウト', destroy_end_user_session_path, method: :delete, :style => "color:gold;" %>
+						<button type="button" class="btn btn-outline">
+							<%= link_to ' ログアウト', destroy_end_user_session_path, method: :delete, :style => "color:gold;",class: "user glyphicon glyphicon-user" %> 
 						</button>
 					</li>
 				<% elsif master_signed_in? %>
@@ -68,6 +67,4 @@
 			</ul>
 		</nav>
   </div>
-</nav>
-</div>
 </div>
