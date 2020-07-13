@@ -1,27 +1,33 @@
-<div class="container">
+<div class="container main">
   <div class="row">
     <div class="col-xs-3">
-      <%= render partial: '/shared/genre_search', locals: { genres: @genres } %>
+      <nav>
+        <%= render partial: '/shared/genre_search', locals: { genres: @genres } %>
+      </nav>
     </div>
 
 
     <div class="col-xs-9">
-      <div id="theTarget">
-        <div class="image1"></div>
-        <div class="image2"></div>
-        <div class="image3"></div>
-        <div class="image4"></div>
-      </div><br>
+      <main>
+        <div id="theTarget">
+          <div class="image1"></div>
+          <div class="image2"></div>
+          <div class="image3"></div>
+          <div class="image4"></div>
+        </div><br>
 
-      <div class="text-gold col-xs-offset-3">
-        ようこそ、NaganoCakeへ！<br>
-        このサイトは、ケーキ販売のECサイトになります。<br>
-        会員でない方も商品の閲覧はできますが、<br>
-        購入には会員登録が必要になります。<br>
-      </div><br><br>
+        <div class="text-gold col-xs-offset-3">
+          ようこそ、NaganoCakeへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。<br>
+        </div><br><br>
 
-      <h4 class="headline">オススメ商品</h4>
-        <%= render partial: 'shared/item_index', locals: { items: @items } %>
+        <h4 class="headline">オススメ商品</h4>
+          <%= render partial: 'shared/item_index', locals: { items: @items } %>
+      </main>
     </div>
+      <aside>
+      </aside>
   </div>
 </div>

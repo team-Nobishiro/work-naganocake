@@ -1,5 +1,5 @@
 class Admin::HomesController < ApplicationController
   def top
-    @orders = Order.all
+    @orders = Order.all.where(created_at: Time.zone.now.all_day)
   end
 end
