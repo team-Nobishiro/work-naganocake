@@ -1,8 +1,10 @@
+<div class="container-header">
+<div class="row">
 <div class="solid">
 <nav class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
   	<nav class="nav navbar-nav navbar-left">
-  	  <div class="logo"><img src="assets/logo.jpg" width="20%" height="20%"></div>
+  	 <div class="logo"><img alt="logo" src="/assets/logo.jpg" class="logo" width="28%" height="28%"></div>
+  	 
   	</nav>
 		<nav>
 			<ul class="nav navbar-nav navbar-right">
@@ -36,11 +38,21 @@
 						</button>
 					</li>
 				<% elsif master_signed_in? %>
+				     <button type="button" class="btn btn-outline-danger">
 					<li><%= link_to ' 商品一覧', admin_items_path, {class: "glyphicon"} %></li>
+				    </button>
+				    <button type="button" class="btn btn-outline-danger">
 					<li><%= link_to ' 会員一覧', admin_end_users_path, {class: "glyphicon"} %></li>
+				     </button>
+				     <button type="button" class="btn btn-outline-danger">
 					<li><%= link_to ' 注文履歴一覧', admin_orders_path, {class: "glyphicon"} %></li>
+				     </button>
+				     <button type="button" class="btn btn-outline-danger">
 					<li><%= link_to ' ジャンル一覧', admin_genres_path, {class: "glyphicon"} %></li>
+				</button>
+				<button type="button" class="btn btn-outline-danger">
 					<li><%= link_to ' ログアウト', destroy_master_session_path, method: :delete, :style => "color: white;" %></li>
+				</button>
 					<div class="search-form">
 						<%= form_tag(search_path, method: :get) do %>
 							<%= text_field_tag 'search[content]' %>
@@ -59,4 +71,6 @@
 		</nav>
   </div>
 </nav>
+</div>
+</div>
 </div>
