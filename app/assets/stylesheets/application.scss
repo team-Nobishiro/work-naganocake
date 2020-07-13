@@ -19,12 +19,16 @@
  * {
    color: white;
    background-color: black;
+   font-family: 'Cambria','游ゴシック','Yu Gothic','ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Hiragino Kaku Gothic ProN','Hiragino Sans','ヒラギノ角ゴシック','メイリオ',Meiryo,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;
  }
 
- html,body {
-   height: 100%;
-    min-height: 740px;
-    position: relative;
+
+ body {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
  }
 
  .container {
@@ -72,6 +76,21 @@ height: 110px;
 li.nav welcome {
   margin-top: 50px
 }
+
+ .headline {
+  font-size: 30px;
+  border-bottom: 1px solid #c69c6d;
+  padding-bottom: 5px;
+ }
+ 
+ .btn btn-outline-danger {
+  padding: 0px 50px 0px ;
+ }
+
+ .left {
+   padding-left: 10px;
+ }
+
  .nav {
    height: 40px;
    
@@ -99,6 +118,19 @@ ul.nav navbar-nav navbar {
 
  a:hover {
    color: white;
+ }
+
+ a {
+   color: white;
+ }
+
+ .border-dot {
+  border-style: dotted;
+  background-color: #303030;
+ }
+
+ .bordot {
+  background-color: #303030;
  }
 
  table {
@@ -135,6 +167,8 @@ ul.nav navbar-nav navbar {
  .text-gold {
    color: #c69c6d;
  }
+
+ 
 
  .way-label {
    text-shadow: 5px 5px 2px #c69c6d;
@@ -182,11 +216,12 @@ li {
   display: inline-flex;
   margin: 5px;
   padding: 10px;
-  background-color: #ffffff;
+  background-color: black;
 }
 
 .box-inline {
   display: inline-block;
+  background-color: #303030;
 }
 
 .background-gold {
@@ -211,4 +246,19 @@ li {
 
   transform: translateY(-10px);
   transition-duration: 0.5s;
+}
+
+.main {
+  flex: 1;
+}
+
+.tableb {
+  border: 2px solid black;
+  margin: 0 20px;
+  flex: 1;
+}
+
+// ユーザートップページ
+.intro {
+  font-size: 20px;
 }
