@@ -1,9 +1,13 @@
 <div class="container main">
-  <% if @model == 'end_user' %>
-    <h3>会員検索結果 '<%= @content %>'</h3>
-    <%= render 'admin/end_users/index', end_users: @records %>
-  <% else @model == 'item' %>
-    <h3>商品検索結果 '<%= @content %>'</h3>
-      <%= render 'admin/items/index', items: @records %>
-  <% end %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <% if @model == 'end_user' %>
+        <h3>会員検索結果 '<%= @content %>'</h3>
+        <%= render 'admin/end_users/index', end_users: @records %>
+      <% else @model == 'item' %>
+        <h3>商品検索結果 '<%= @content %>'</h3>
+          <%= render 'admin/items/index', items: @records %>
+      <% end %>
+    </div>
+  </div>
 </div>
