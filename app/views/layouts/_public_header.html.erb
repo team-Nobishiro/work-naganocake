@@ -1,12 +1,12 @@
-<div id="container-header">
+<div class="container-header">
 	<nav class="nav navbar-nav navbar-left">
 		<div class="logo"><img alt="logo" src="/assets/logo.jpg" class="logo" width="90%" height="95%"></div>
 	</nav>
 	<nav>
-		<ul class="nav navbar-nav navbar-right">
+		<ul class="nav navbar-nav navbar-right padding-top">
 			<li class="nav welcome">
 				<% if end_user_signed_in? %>
-				<li>ようこそ、<%= current_end_user.last_name %><%= current_end_user.first_name %>さん!</li>
+				<li class="welcome">ようこそ、<%= current_end_user.last_name %><%= current_end_user.first_name %>さん!</li>
 			</li>
 			<li>
 				<button type="button" class="btn btn-outline-danger">
