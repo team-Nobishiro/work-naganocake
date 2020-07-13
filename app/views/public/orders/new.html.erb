@@ -8,18 +8,18 @@
 
   <h3 class="col-md-offset-4">注文情報入力</h3><br>
 
+  <%=form_tag(order_confirm_path, method: :get) do %>
   <div class="col-md-offset-4">
-    <h4 class="way-label"><strong>　支払い方法</strong></h4><br>
-      <%=form_tag(order_confirm_path, method: :get) do %>
+    <h4 class="way-label"><strong>　支払い方法</strong></h4><br>      
         <%= radio_button_tag :payment_way, :クレジットカード %>
         <%= label_tag :payment_way, "クレジットカード" %><br>
         <%= radio_button_tag :payment_way, :銀行振込 %>
         <%= label_tag :payment_way, "銀行振込" %><br><br>
   </div>
 
-     <h4 class="way-label col-md-offset-4"><strong>　お届け先</strong></h4><br>
-      <div class="address-form">
-      <div class="col-md-offset-4">          
+     <div class="col-md-offset-4">
+       <h4 class="way-label"><strong>　お届け先</strong></h4><br>
+        <div class="address-form">          
         <%= radio_button_tag :select, :my_address %>
         <%= label_tag :select, "ご自身の住所", {value: :my_address} %><br>
         <% address = current_end_user.postal_code + current_end_user.address + current_end_user.last_name + current_end_user.first_name %>
