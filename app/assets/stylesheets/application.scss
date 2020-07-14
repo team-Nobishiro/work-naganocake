@@ -22,30 +22,29 @@
    font-family: 'Cambria','游ゴシック','Yu Gothic','ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Hiragino Kaku Gothic ProN','Hiragino Sans','ヒラギノ角ゴシック','メイリオ',Meiryo,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;
  }
 
-
  body {
-    margin-top: 100px;
-    margin-bottom: 50px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+   margin-bottom: 50px;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
  }
 
  .container {
    width: 100%;
    height: 100%;
-   padding: 20px 0px 0px 80px;
+   padding: 20px 0px 0px 0px;
  }
-#container-header {
- width: 100%;
-    margin: 0;
-    padding: 0;
-    height: 120px;
-    box-sizing: border-box;
-    background: linear-gradient(to bottom,#000000 60%,#3C3C3C );
-    border-bottom: 1px solid #C7B299;
-    z-index: 4;
-    position: relative;
+
+ #container-header {
+   width: 100%;
+   margin: 0;
+   padding: 0;
+   height: 120px;
+   box-sizing: border-box;
+   background: linear-gradient(to bottom,#000000 60%,#3C3C3C );
+   border-bottom: 1px solid #C7B299;
+   z-index: 4;
+   position: relative;
  }
 
  div.row-navbar navbar-fixed {
@@ -53,24 +52,22 @@
 height: 110px;
  }
 
-
-       .navbar {
+ .navbar {
     position: relative;
     min-height: 50px;
     margin-bottom: 0px;
     border: 1px solid transparent;
 }
+
   .li {
   margin-top: 16px;
   height: 50px;
-
   }
+
  button.btn btn-outline-danger {padding: 0px 0px 0px 0px ;
   margin-left: 25px;
     margin-top: 50px;
     margin-right: 20px;
-  
-
  }
  
 li.nav welcome {
@@ -93,6 +90,26 @@ li.nav welcome {
 
  .nav {
    height: 40px;
+ }
+
+ .transaction {  /* 顧客 マイページ */
+   width: 40%;
+ }
+
+ .shipping-table { /* 顧客 配送先登録一覧ページ */
+   width: 50%;
+ }
+
+ .orderindex-table { /* 顧客 注文一覧ページ */
+   width: 70%;
+ }
+
+ .ordershow-table { /* 顧客 注文詳細ページ */
+   width: 35%;
+ }
+
+ .shipping-span {
+   padding: 0 50px 0 50px;
  }
  
  /*　ヘッダー public　*/
@@ -252,3 +269,4 @@ li {
 // ユーザートップページ
 .intro {
   font-size: 20px;
+ }
