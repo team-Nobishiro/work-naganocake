@@ -16,7 +16,7 @@
  @import "bootstrap-sprockets";  /*ここを追加*/
  @import "bootstrap";            /*ここを追加*/
 
- * {
+  * {
    color: white;
    background-color: black;
    font-family: 'Cambria','游ゴシック','Yu Gothic','ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Hiragino Kaku Gothic ProN','Hiragino Sans','ヒラギノ角ゴシック','メイリオ',Meiryo,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;
@@ -103,6 +103,18 @@
     position: relative;
  }
 
+
+ .container-fooder {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height:   30px;
+    box-sizing: border-box;
+    
+    border-top: 1px solid #C7B299;
+    z-index: 4;
+    position: relative;
+ }
  .padding-top {
   padding-top: 50px;
  }
@@ -119,7 +131,8 @@ height: 110px;
 
        .navbar {
     position: relative;
-    min-height: 50px;
+    min-height: 150px;
+    width: 100%;
     margin-bottom: 0px;
     border: 1px solid transparent;
 }
@@ -291,7 +304,7 @@ li {
   width: 600px;
 }
 
-/* 写真拡大 */
+/* 写真浮く*/
 
 .img_wrap:hover{
 .image {
@@ -315,4 +328,42 @@ li {
 // ユーザートップページ
 .intro {
   font-size: 20px;
+
+}
+/* フッダー */
+li.moji {
+      margin: 40px 0px 0px 320px;
+
+}
+.log {
+height: 110px;
+  width: 250px;
+  padding: 0px 0px 0px 0px;
+  background:rgba(0,0,0,0);
+  margin: 10px 0px 0px 270px;
+  
+}
+div.log {
+  width: 100%
+}
+
+.footer_logo solid {
+width: 100%;
+height: 300px;
+}
+.footer {
+width: 100%;
+height: 1000px;
+}
+ 
+
+/* くるくる回る */
+
+.logo img{
+    transition: 1.0s;
+    transform: rotateY(0deg );
+}
+.logo:hover img {
+    transform: rotateY( 360deg );
+
 }
