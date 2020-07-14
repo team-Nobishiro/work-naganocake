@@ -385,3 +385,95 @@ height: 1000px;
 
 }
 
+/* thankページ 装飾 */
+
+ $canvas-size: 100%;
+ $dot-size: 18px;
+
+ .canvas {
+   justify-content: center;
+   align-items: center;
+   width: 100vw;
+   height: 100vh;
+   overflow: hidden;
+   background-color: #171723;
+
+   position: relative;
+   width: 100%;
+   height: 100%;
+   max-width: $canvas-size;
+   max-height: $canvas-size;
+}
+
+.line {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 11.11%;
+}
+
+@keyframes dot-scaling-one {
+    0%, 45%, 100% { transform: scale(0.33); }
+    15% { transform: scale(1); }
+    30% { transform: scale(0.1); }
+}
+
+@keyframes dot-scaling-two {
+    0%, 55%, 100% { transform: scale(1); }
+    70% { transform: scale(3); }
+    85% { transform: scale(0.33); }
+}
+
+.dot {
+    width: $dot-size;
+    height: $dot-size;
+    transform: scale(0.33);
+    animation-name: dot-scaling-one;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+
+    &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        animation-name: dot-scaling-two;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+    }
+}
+
+.dot--aqua::before {
+    background-color: aqua;
+}
+
+.dot--gold::before {
+    background-color: gold;
+}
+
+.dot--tomato::before {
+    background-color: tomato;
+}
+
+@for $l from 1 through 9 {
+    @for $d from 1 through 9 {
+        .line:nth-child(#{$l}) .dot:nth-child(#{$d}) {
+            animation-delay: #{($d * 0.1) + (($l - 1) * 0.1)}s;
+        }
+    }
+}
+
+@for $l from 1 through 4 {
+    .line:nth-child(#{$l}),
+    .line:nth-child(#{10 - $l}) {
+        @for $d from 1 through 4 {
+            .dot:nth-child(#{$d})::before,
+            .dot:nth-child(#{10 - $d})::before {
+                animation-delay: #{(5 - $d) * 0.1}s;
+            }
+        }
+    }
+}
+
