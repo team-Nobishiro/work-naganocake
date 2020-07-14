@@ -1,61 +1,53 @@
-<div class="container">
+<div class="container main">
   <div class="row">
-    <h2>会員編集画面</h2>
-  </div>
-
-
- <%= form_for (@end_user), url: admin_end_user_path(@end_user) do |f| %>
-
- <div class="form-group row">
-          <%= f.label :会員id, class: "col-sm-4" %>
-          <%= f.label @end_user.id, class: "col-sm-8" %>
-        </div>
-
-   <div class="form-group row">
-          <%= f.label :氏名, class: "col-sm-4" %>
-          <%= f.text_field :last_name, class: "form-control col-sm-4" %>
-          <%= f.text_field :first_name, class: "form-control col-sm-4" %>
-        </div>
- <div class="form-group row">
-          <%= f.label :フリガナ, class: "col-sm-4" %>
-          <%= f.text_field :last_name_kana, class: "form-control col-sm-4" %>
-          <%= f.text_field :first_name_kana, class: "form-control col-sm-4" %>
-        </div>
-
-       <div class="form-group row">
-          <%= f.label :郵便番号, class: "col-sm-4" %>
-          <%= f.text_field :postal_code, class: "form-control col-sm-8" %>
-        </div>
-
-          <div class="form-group row">
-          <%= f.label :住所, class: "col-sm-4" %>
-          <%= f.text_field :address, class: "form-control col-sm-8" %>
-        </div>
-
-        <div class="form-group row">
-          <%= f.label :電話番号, class: "col-sm-4" %>
-          <%= f.text_field :phone_number, class: "form-control col-sm-8" %>
-        </div>
-
-         <div class="form-group row">
-          <%= f.label :メールアドレス, class: "col-sm-4" %>
-          <%= f.email_field :email, class: "form-control col-sm-8" %>
-        </div>
-
-         <div class="row">
-          <%= f.label :会員ステータス, class: "ml-3" %>
-          <div class="form-check ml-4">
+    <div class="col-xs-8 col-xs-offset-2">
+      <h2>会員編集画面</h2>
+      <%= form_for (@end_user), url: admin_end_user_path(@end_user) do |f| %>
+      <div class="form-group">
+        <%= f.label :会員id, class: "edit-u" %>
+        <%= f.label @end_user.id, class: "" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :氏名, class: "edit-u" %>
+        <%= f.text_field :last_name, class: "edit-user" %>
+        <%= f.text_field :first_name, class: "edit-user" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :フリガナ, class: "edit-u" %>
+        <%= f.text_field :last_name_kana, class: "edit-user" %>
+        <%= f.text_field :first_name_kana, class: "edit-user" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :郵便番号, class: "edit-u" %>
+        <%= f.text_field :postal_code, class: "edit-user" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :住所, class: "edit-u" %>
+        <%= f.text_field :address, class: "edit-user" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :電話番号, class: "edit-u" %>
+        <%= f.text_field :phone_number, class: "edit-user" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :メールアドレス, class: "edit-u" %>
+        <%= f.email_field :email, class: "edit-user" %>
+      </div>
+      <div class="">
+        <%= f.label :会員ステータス, class: "edit-u" %>
+        <div class="form-check">
             <%= f.radio_button :is_withdrawal, :true %>
             <%= f.label :is_withdrawal, "有効会員" %>
             <%= f.radio_button :is_withdrawal, :false %>
             <%= f.label :is_withdrawal, "退会済み" %>
-          </div>
         </div>
-        <div class="row">
-          <%= f.submit "変更を保存する", class: "btn btn-primary mt-3 mx-auto" %>
-        </div>
- <% end %>
+      </div>
+      <div class="">
+        <%= f.submit "変更を保存する", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
   
-
-       

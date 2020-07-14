@@ -1,32 +1,34 @@
-<div class="container">
-  <h2>注文履歴一覧</h2>
-  <div class="row mt-1">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>購入日時</th>
-          <th>購入者</th>
-          <th>注文個数</th>
-          <th>注文ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @orders.each do |o| %>
-          <% @count = 0 %>
-          <% o.order_items.each do |oi| %>
-            <% if oi.number != nil %>
-              <% @count += oi.number %>
-            <% end %>
-          <% end %>
+<div class="container main">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <h2>注文履歴一覧</h2>
+      <table class="table table-hover">
+        <thead>
           <tr>
-            <td><%= link_to o.created_at.strftime('%Y/%m/%d %H:%M'),admin_order_path(o) %></td>
-            <td><%= o.end_user.last_name + o.end_user.first_name %></td>
-            <td><%= @count %></td>
-            <td><%= o.select %></td>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @orders.each do |o| %>
+            <% @count = 0 %>
+            <% o.order_items.each do |oi| %>
+              <% if oi.number != nil %>
+                <% @count += oi.number %>
+              <% end %>
+            <% end %>
+            <tr>
+              <td><%= link_to o.created_at.strftime('%Y/%m/%d %H:%M'),admin_order_path(o), :style => "color: #C7B299;" %></td>
+              <td><%= o.end_user.last_name + o.end_user.first_name %></td>
+              <td><%= @count %></td>
+              <td><%= o.select %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
