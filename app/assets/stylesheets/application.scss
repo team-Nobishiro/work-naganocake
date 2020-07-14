@@ -103,6 +103,7 @@
     position: relative;
  }
 
+
  .container-fooder {
     width: 100%;
     margin: 0;
@@ -114,7 +115,6 @@
     z-index: 4;
     position: relative;
  }
-
  .padding-top {
   padding-top: 50px;
  }
@@ -328,6 +328,7 @@ li {
 // ユーザートップページ
 .intro {
   font-size: 20px;
+
 }
 /* フッダー */
 li.moji {
@@ -364,4 +365,5 @@ height: 1000px;
 }
 .logo:hover img {
     transform: rotateY( 360deg );
+
 }

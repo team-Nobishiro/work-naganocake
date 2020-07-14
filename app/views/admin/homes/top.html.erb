@@ -7,33 +7,4 @@
       <% end %>件
     </h1>
   </div>
-  <br><br>
-  <div class="row">
-    <table class="table table-hover col-xs-8 col-xs-offset-2">
-      <thead>
-        <tr>
-          <th>購入日時</th>
-          <th>購入者</th>
-          <th>注文個数</th>
-          <th>注文ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @orders.each do |o| %>
-          <% @count = 0 %>
-          <% o.order_items.each do |oi| %>
-            <% if oi.number != nil %>
-              <% @count += oi.number %>
-            <% end %>
-          <% end %>
-          <tr>
-            <td><%= link_to o.created_at.strftime('%Y/%m/%d %H:%M'),admin_order_path(o) %></td>
-            <td><%= o.end_user.last_name + o.end_user.first_name %></td>
-            <td><%= @count %></td>
-            <td><%= o.select %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
 </div>

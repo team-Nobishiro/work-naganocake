@@ -3,7 +3,6 @@
 		<div class="logo"><img alt="logo" src="/assets/logo.jpg" class="logo" width="90%" height="95%"></div>
 	</nav>
 
-
 	<nav>
 		<ul class="nav navbar-nav navbar-right padding-top">
 			<li class="nav welcome">
@@ -13,11 +12,13 @@
 			<li>
 				<button type="button" class="btn btn-outline-danger">
 					<%= link_to ' トップページ', root_path, :style => "color: #C7B299;",class: "home glyphicon glyphicon-home" %> 
+
 				</button>
 			</li>
 			<li>
 				<button type="button" class="btn btn-outline-danger">
 					<%= link_to ' マイページ', public_end_users_path, :style => "color: #C7B299;", class: "user glyphicon glyphicon-user" %>
+
 				</button>
 			</li>
 			<li>
@@ -27,6 +28,7 @@
 			</li>
 			<li>
 				<button type="button" class="btn btn-outline-danger">
+
 					<%= link_to ' カート', public_cart_items_path, :style => "color: #C7B299;",class: "plus glyphicon glyphicon-plus" %>
 				</button>
 			</li>
@@ -59,6 +61,7 @@
 					<%= submit_tag 'search' %>
 				<% end %>
 			</div>
+
 			<% else %>
 							<li><%= link_to ' About', public_homes_about_path, {class: "glyphicon"} %></li>
 							<li><%= link_to ' 商品一覧',public_items_path, {class: "glyphicon"} %></li>
