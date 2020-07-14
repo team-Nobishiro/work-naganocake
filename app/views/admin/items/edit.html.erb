@@ -1,8 +1,8 @@
 <div class="container main">
   <div class="row">
+    <%= form_for(@item, url: admin_item_path) do |f| %>
     <div class="col-xs-3 col-xs-offset-2">
       <h3>商品編集</h3>
-      <%= form_for(@item, url: admin_item_path) do |f| %>
         <%= f.label :商品画像 %>
         <%= f.attachment_field :image %>
     </div>
