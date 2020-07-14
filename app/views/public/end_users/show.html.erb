@@ -1,22 +1,17 @@
 <section class="cake-top main">
-  <h2 class="title">マイページ</h2>
-  <div class="guide_conts">
-    <nav>   
-			<ul class="nav navbar-nav">
-					<li><h4>　登録情報</h4></li>
-					<li>
-						<button type="button" class="btn btn-primary">
-							<%= link_to '編集する', edit_public_end_users_path, :style => "color:white;" %>
-						</button>
-					</li>
-					<li>
-						<button type="button" class="btn btn-primary">
-							<%= link_to ' パスワードを変更する', edit_end_user_registration_path, :style => "color:white;" %>
-						</button>
-					</li>
-			</ul>
-		</nav>
-    <table class="transaction">
+  <h3 class="title text-center">マイページ</h3><br>
+  
+		<h4 class="text-center way-label">登録情報</h4><br>
+      <div class="col-md-offset-5">
+			<button type="button" class="btn btn-primary">
+				<%= link_to '編集する', edit_public_end_users_path, :style => "color:white;" %>
+			</button>
+			<button type="button" class="btn btn-primary">
+				<%= link_to ' パスワードを変更する', edit_end_user_registration_path, :style => "color:white;" %>
+			</button>
+      </div><br>
+
+    <table class="transaction col-md-offset-4">
       <tbody>
           <tr>
             <th>氏名</th>
@@ -43,17 +38,20 @@
             <th><%= current_end_user.email %></th>
           </tr>
       </tbody>
-    </table>
-  </div>
-  
-  <ul>
-      <li><h4>配送先</h4></li>
-    <li><button type="button" class="btn btn-success">
+    </table><br>
+
+    <h4 class="text-center">
+      <span class="way-label"> 配送先　</span>
+      <span>
+        <span class="way-label"> 注文履歴</span>
+      </span><br><br>
+    <button type="button" class="btn btn-success">
       <%= link_to "一覧を見る", public_shipping_addresses_path, :style => "color:white;" %>
-    </li>
-      <li><h4>注文履歴</h4></li>
-    <li><button type="button" class="btn btn-success">
+    </button>
+    <span>
+      <button type="button" class="btn btn-success">
       <%= link_to "一覧を見る", public_orders_path, :style => "color:white;" %>
-    </li>
-  </ul>
+      </button>
+    </span>
+    </h4>
 </section>

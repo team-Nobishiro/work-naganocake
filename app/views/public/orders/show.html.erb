@@ -1,9 +1,8 @@
 <div class="container main">
-  <h2>注文履歴詳細</h2>
+  <h3 class="text-center">注文履歴詳細</h3><br>
   <div class="row mt-1">
-    <div>
-      <p>注文情報</p>
-      <table class="table table-hover">
+      <h4 class="way-label text-center"><strong>注文情報</strong></h4>
+      <table class="ordershow-table table table-hover col-md-offset-4">
         <tbody>
           <tr>
             <td>注文日</td>
@@ -30,13 +29,12 @@
           <tr>
             <td>ステータス</td>
             <td><%= @order.select %> </td>
-          <tr>
+          </tr>
         </tbody>
       </table>
-    </div>
-    <div>
-      <p>請求情報</p>
-      <table class="table table-hover">
+
+      <h4 class="way-label text-center"><strong>請求情報</strong></h4>
+      <table class="ordershow-table table table-hover col-md-offset-4">
         <tbody>
           <tr>
             <td>商品合計</td>
@@ -49,15 +47,14 @@
           <tr>
             <td>ご請求額</td>
             <td><%= @order.toral_price + @order.send_price%></td>
-          <tr>
+          </tr>
         </tbody>
       </table>
     </div>
-  </div>
+
   <div class="row mt-1">
-    <div>
-      <p>注文内容</p>
-      <table class="table table-hover">
+      <h4 class="way-label text-center"><strong>注文内容</strong></h4>
+      <table class="ordershow-table table table-hover col-md-offset-4">
         <thead>
           <tr>
             <th>商品</th>
