@@ -24,19 +24,24 @@
                 <tr class="form-group has-icon">
                   <th align="right" scope="row" width="30%">メールアドレス</th>
                   <td><%= f.text_area :email, autofocus: true, class:"form-control", placeholder:"Introduction"%></td>
+                  <td></td>
                 </tr>
                 <tr class="form-group has-icon">
                   <th align="right" scope="row" width="30%">郵便番号(ハイフンなし)</th>
                   <td><%= f.text_area :postal_code, autofocus: true, class:"form-control", placeholder:"Introduction"%></td>
+                  <td></td>
                 </tr>
                 <tr class="form-group has-icon">
                   <th align="right" scope="row" width="30%">住所</th>
                   <td><%= f.text_area :address, autofocus: true, class:"form-control", placeholder:"Introduction"%></td>
+                  <td></td>
                 </tr>
                 <tr class="form-group has-icon">
                   <th align="right" scope="row" width="30%">電話番号(ハイフンなし)</th>
                   <td><%= f.text_area :phone_number, autofocus: true, class:"form-control", placeholder:"Introduction"%></td>
+                  <td></td>
                 </tr>
+
               </tbody>
             </table>
             <%= f.submit "登録内容を保存する" %>
